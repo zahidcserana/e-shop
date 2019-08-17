@@ -45,7 +45,7 @@ $categories = DB::table('categories')->get();
 <body>
 
 <!--================Top Header Area =================-->
-<div class="header_top_area">
+{{--  <div class="header_top_area">
     <div class="container">
         <div class="row">
             <div class="col-lg-3">
@@ -110,7 +110,7 @@ $categories = DB::table('categories')->get();
             </div>
         </div>
     </div>
-</div>
+</div>  --}}
 <!--================End Top Header Area =================-->
 
 <!--================Menu Area =================-->

@@ -128,29 +128,34 @@
     <section class="feature_add_area">
         <div class="container">
             <div class="row feature_inner">
-                <div class="col-lg-5">
+                <div class="col-lg-4">
                     <div class="f_add_item">
-                        <div class="f_add_img"><img class="img-fluid" src="{{asset('front/img/feature-add/f-add-1.jpg')}}" alt=""></div>
+                        <div class="f_add_img"><img class="img-fluid" src="{{asset('front/img/feature-add/f-add-8.jpg')}}" alt=""></div>
                         <div class="f_add_hover">
-                            <h4>Best Summer <br />Collection</h4>
-                            <a class="add_btn" href="#">Shop Now <i class="arrow_right"></i></a>
+                            <h4>Best {{ $categories[0]->name }} <br />Collection</h4>
+                            <a class="add_btn" href="{{ url('/category/'.$categories[0]->id) }}">Shop Now <i class="arrow_right"></i></a>
                         </div>
                         <div class="sale">Sale</div>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="f_add_item right_dir">
-                        <div class="f_add_img"><img class="img-fluid" src="{{asset('front/img/feature-add/f-add-2.jpg')}}" alt=""></div>
+                        <div class="f_add_img"><img class="img-fluid" src="{{asset('front/img/feature-add/f-add-8.jpg')}}" alt=""></div>
                         <div class="f_add_hover">
-                            <h4>Best Summer <br />Collection</h4>
-                            <a class="add_btn" href="#">Shop Now <i class="arrow_right"></i></a>
+                            <h4>Best {{ $categories[1]->name }} <br />Collection</h4>
+                            <a class="add_btn" href="{{ url('/category/'.$categories[1]->id) }}">Shop Now <i class="arrow_right"></i></a>
                         </div>
                         <div class="off">10% off</div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                     <div class="f_add_item">
-                        <div class="f_add_img"><img class="img-fluid" src="{{asset('front/img/feature-add/f-add-3.jpg')}}" alt=""></div>
+                        <div class="f_add_img"><img class="img-fluid" src="{{asset('front/img/feature-add/f-add-8.jpg')}}" alt=""></div>
+                        <div class="f_add_hover">
+                            <h4>Best {{ $categories[2]->name }} <br />Collection</h4>
+                            <a class="add_btn" href="{{ url('/category/'.$categories[2]->id) }}">Shop Now <i class="arrow_right"></i></a>
+                        </div>
+                        <div class="sale">Sale</div>
                     </div>
                 </div>
             </div>
@@ -162,13 +167,16 @@
     <section class="our_latest_product">
         <div class="container">
             <div class="s_m_title">
-                <h2>Our Latest Product</h2>
+                <h2>Our Featured Product</h2>
             </div>
             <div class="l_product_slider owl-carousel">
+                @if (isset($products[0]) && isset($products[1]))
                 <div class="item">
                     <div class="l_product_item">
                         <div class="l_p_img">
-                            <img src="{{asset('front/img/product/l-product-1.jpg')}}" alt="">
+                            <a href="{{route('view_product',$products[0]->id)}}">
+                                <img src="{{ $products[0]->image }}" alt="">
+                            </a>
                         </div>
                         <div class="l_p_text">
                             <ul>
@@ -176,13 +184,15 @@
                                 <li><a class="add_cart_btn" href="#">Add To Cart</a></li>
                                 <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
                             </ul>
-                            <h4>Womens Libero</h4>
-                            <h5><del>$45.50</del>  $40</h5>
+                            <h4>{{ $products[0]->name }}</h4>
+                            <h5><del>{{ $products[0]->price + 10}}</del>  {{ $products[0]->price }}</h5>
                         </div>
                     </div>
                     <div class="l_product_item">
                         <div class="l_p_img">
-                            <img src="{{asset('front/img/product/l-product-5.jpg')}}" alt="">
+                            <a href="{{route('view_product',$products[1]->id)}}">
+                                <img src="{{ $products[1]->image }}" alt="">
+                            </a>
                         </div>
                         <div class="l_p_text">
                             <ul>
@@ -190,15 +200,19 @@
                                 <li><a class="add_cart_btn" href="#">Add To Cart</a></li>
                                 <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
                             </ul>
-                            <h4>Oxford Shirt</h4>
-                            <h5>$85.50</h5>
+                            <h4>{{ $products[1]->name }}</h4>
+                            <h5><del>{{ $products[1]->price + 10}}</del>  {{ $products[1]->price }}</h5>
                         </div>
                     </div>
                 </div>
+                @endif
+                @if (isset($products[2]) && isset($products[3]))
                 <div class="item">
                     <div class="l_product_item">
                         <div class="l_p_img">
-                            <img src="{{asset('front/img/product/l-product-2.jpg')}}" alt="">
+                            <a href="{{route('view_product',$products[2]->id)}}">
+                                <img src="{{ $products[2]->image }}" alt="">
+                            </a>
                         </div>
                         <div class="l_p_text">
                             <ul>
@@ -206,13 +220,15 @@
                                 <li><a class="add_cart_btn" href="#">Add To Cart</a></li>
                                 <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
                             </ul>
-                            <h4>Travel Bags</h4>
-                            <h5><del>$45.50</del>  $40</h5>
+                            <h4>{{ $products[2]->name }}</h4>
+                            <h5><del>{{ $products[2]->price + 10}}</del>  {{ $products[2]->price }}</h5>
                         </div>
                     </div>
                     <div class="l_product_item">
                         <div class="l_p_img">
-                            <img src="{{asset('front/img/product/l-product-6.jpg')}}" alt="">
+                            <a href="{{route('view_product',$products[3]->id)}}">
+                                <img src="{{ $products[3]->image }}" alt="">
+                            </a>
                         </div>
                         <div class="l_p_text">
                             <ul>
@@ -220,15 +236,19 @@
                                 <li><a class="add_cart_btn" href="#">Add To Cart</a></li>
                                 <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
                             </ul>
-                            <h4>High Heel</h4>
-                            <h5><del>$130.50</del>  $110</h5>
+                            <h4>{{ $products[3]->name }}</h4>
+                            <h5><del>{{ $products[3]->price + 10}}</del>  {{ $products[3]->price }}</h5>
                         </div>
                     </div>
                 </div>
+                @endif
+                @if (isset($products[4]) && isset($products[5]))
                 <div class="item">
                     <div class="l_product_item">
                         <div class="l_p_img">
-                            <img src="{{asset('front/img/product/l-product-3.jpg')}}" alt="">
+                            <a href="{{ route('view_product',$products[4]->id)}}">
+                                <img src="{{ $products[4]->image }}" alt="">
+                            </a>
                         </div>
                         <div class="l_p_text">
                             <ul>
@@ -236,13 +256,15 @@
                                 <li><a class="add_cart_btn" href="#">Add To Cart</a></li>
                                 <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
                             </ul>
-                            <h4>Summer Dress</h4>
-                            <h5>$45.05</h5>
+                            <h4>{{ $products[4]->name }}</h4>
+                            <h5><del>{{ $products[4]->price + 10}}</del>  {{ $products[4]->price }}</h5>
                         </div>
                     </div>
                     <div class="l_product_item">
                         <div class="l_p_img">
-                            <img src="{{asset('front/img/product/l-product-7.jpg')}}" alt="">
+                            <a href="{{route('view_product',$products[5]->id)}}">
+                                <img src="{{ $products[5]->image }}" alt="">
+                            </a>
                         </div>
                         <div class="l_p_text">
                             <ul>
@@ -250,15 +272,19 @@
                                 <li><a class="add_cart_btn" href="#">Add To Cart</a></li>
                                 <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
                             </ul>
-                            <h4>Fossil Watch</h4>
-                            <h5>$250.00</h5>
+                            <h4>{{ $products[5]->name }}</h4>
+                            <h5><del>{{ $products[5]->price + 10}}</del>  {{ $products[5]->price }}</h5>
                         </div>
                     </div>
                 </div>
+                @endif
+                @if (isset($products[6]) && isset($products[7]))
                 <div class="item">
                     <div class="l_product_item">
                         <div class="l_p_img">
-                            <img src="{{asset('front/img/product/l-product-4.jpg')}}" alt="">
+                            <a href="{{route('view_product',$products[6]->id)}}">
+                                <img src="{{ $products[6]->image }}" alt="">
+                            </a>
                         </div>
                         <div class="l_p_text">
                             <ul>
@@ -266,13 +292,15 @@
                                 <li><a class="add_cart_btn" href="#">Add To Cart</a></li>
                                 <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
                             </ul>
-                            <h4>Nike Shoes</h4>
-                            <h5><del>$130</del> $110</h5>
+                            <h4>{{ $products[6]->name }}</h4>
+                            <h5><del>{{ $products[6]->price + 10}}</del>  {{ $products[6]->price }}</h5>
                         </div>
                     </div>
                     <div class="l_product_item">
                         <div class="l_p_img">
-                            <img src="{{asset('front/img/product/l-product-8.jpg')}}" alt="">
+                            <a href="{{route('view_product',$products[7]->id)}}">
+                                <img src="{{ $products[7]->image }}" alt="">
+                            </a>
                         </div>
                         <div class="l_p_text">
                             <ul>
@@ -280,11 +308,12 @@
                                 <li><a class="add_cart_btn" href="#">Add To Cart</a></li>
                                 <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
                             </ul>
-                            <h4>Ricky Shirt</h4>
-                            <h5>$45.05</h5>
+                            <h4>{{ $products[7]->name }}</h4>
+                            <h5><del>{{ $products[7]->price + 10}}</del>  {{ $products[7]->price }}</h5>
                         </div>
                     </div>
                 </div>
+               @endif
             </div>
         </div>
     </section>
@@ -400,19 +429,24 @@
                     <div class="col-lg-3">
                         <div class="f_product_left">
                             <div class="s_m_title">
-                                <h2>Featured Products</h2>
+                                <h2>Latest Products</h2>
                             </div>
                             <div class="f_product_inner">
-                                <div class="media">
-                                    <div class="d-flex">
-                                        <img src="{{asset('front/img/product/featured-product/f-p-1.jpg')}}" alt="">
+                                @for ($i = 0; $i<3; $i++)
+                                <a href="{{route('view_product', $lProducts[$i]->id)}}">
+                                    <div class="media">
+                                        <div class="d-flex">
+                                            <img src="{{ $lProducts[$i]->image }}" alt="" width="50">
+                                        </div>
+                                        <div class="media-body">
+                                            <h4>{{ $lProducts[$i]->name }}</h4>
+                                            <h5>{{ $lProducts[$i]->price }}</h5>
+                                        </div>
                                     </div>
-                                    <div class="media-body">
-                                        <h4>Oxford Shirt</h4>
-                                        <h5>$45.05</h5>
-                                    </div>
-                                </div>
-                                <div class="media">
+                                </a>
+                                @endfor
+
+                                {{--  <div class="media">
                                     <div class="d-flex">
                                         <img src="{{asset('front/img/product/featured-product/f-p-2.jpg')}}" alt="">
                                     </div>
@@ -438,32 +472,37 @@
                                         <h4>Casual Shoes</h4>
                                         <h5>$45.05</h5>
                                     </div>
-                                </div>
+                                </div>  --}}
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-9">
                         <div class="fillter_slider_inner">
                             <ul class="portfolio_filter">
-                                <li class="active" data-filter="*"><a href="#">men's</a></li>
-                                <li data-filter=".woman"><a href="#">Woman</a></li>
-                                <li data-filter=".shoes"><a href="#">Shoes</a></li>
-                                <li data-filter=".bags"><a href="#">Bags</a></li>
+                                <li class="active" data-filter="*"><a href="#">All</a></li>
+                                @foreach ($categories as $category)
+                                    <li data-filter=".{{ $category->url }}"><a href="#">{{ $category->name }}</a></li>
+                                @endforeach
                             </ul>
                             <div class="fillter_slider owl-carousel">
-                                <div class="item shoes">
-                                    <div class="fillter_product_item bags">
-                                        <div class="f_p_img">
-                                            <img src="{{asset('front/img/product/fillter-product/f-product-1.jpg')}}" alt="">
-                                            <h5 class="sale">Sale</h5>
-                                        </div>
-                                        <div class="f_p_text">
-                                            <h5>Nike Max Air Vapor Power</h5>
-                                            <h4>$45.05</h4>
+                                @foreach ($lProducts as $item)
+                                    <div class="item {{ $item->category->url }}">
+                                        <div class="fillter_product_item bags">
+                                            <div class="f_p_img">
+                                                <img src="{{ $item->image }}" alt="">
+                                                <h5 class="sale">Sale</h5>
+                                            </div>
+                                            <div class="f_p_text">
+                                                <a href="{{route('view_product',$item->id)}}">
+                                                    <h5>{{ $item->name }}</h5>
+                                                </a>
+                                                <h4>{{ $item->price }}</h4>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="item woman shoes bags">
+                                @endforeach
+
+                                {{--  <div class="item woman shoes bags">
                                     <div class="fillter_product_item">
                                         <div class="f_p_img">
                                             <img src="{{asset('front/img/product/fillter-product/f-product-2.jpg')}}" alt="">
@@ -558,7 +597,7 @@
                                             <h4>$45.05</h4>
                                         </div>
                                     </div>
-                                </div>
+                                </div>  --}}
                             </div>
                         </div>
                     </div>
@@ -569,7 +608,7 @@
     <!--================End Featured Product Area =================-->
 
     <!--================Form Blog Area =================-->
-    <section class="from_blog_area">
+    {{--  <section class="from_blog_area">
         <div class="container">
             <div class="from_blog_inner">
                 <div class="c_main_title">
@@ -609,6 +648,6 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>  --}}
     <!--================End Form Blog Area =================-->
 @endsection

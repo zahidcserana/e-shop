@@ -39,7 +39,8 @@ class CategoriesController extends Controller
         }
 
         $input = array(
-            'name' => $data['name']
+            'name' => $data['name'],
+            'url' => $this->seoUrl($data['name']),
         );
         if ($data['id'] != null) {
             DB::table('categories')->where('id', $data['id'])->update($input);

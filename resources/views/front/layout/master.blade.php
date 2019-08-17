@@ -4,7 +4,7 @@ use App\Model\Category;
 
 $categories = DB::table('categories')->get();
 ?>
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -40,6 +40,24 @@ $categories = DB::table('categories')->get();
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>
+        .top_right li.cart a:before {
+            content: none;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            text-align: center;
+            color: #fff;
+            font-family: "Poppins", sans-serif;
+            font-size: 12px;
+            position: absolute;
+            right: 6px;
+            bottom: 6px;
+            background: #d91522;
+            line-height: 20px;
+        }
+    </style>
+     @yield('header_js')
 </head>
 <body>
 
@@ -48,7 +66,7 @@ $categories = DB::table('categories')->get();
     <div class="container">
         <div class="row">
             <div class="col-lg-3">
-                <div class="top_header_left">
+                {{--  <div class="top_header_left">
                     <div class="selector">
                         <select class="language_drop" name="countries" id="countries" style="width:300px;">
                             <option value='yu' data-image="{{asset('front/img/icon/home-1.png')}}"
@@ -59,18 +77,18 @@ $categories = DB::table('categories')->get();
                             </option>
                         </select>
                     </div>
-                  {{--  <select class="selectpicker usd_select">
+                   <select class="selectpicker usd_select">
                         <option>USD</option>
                         <option>$</option>
                         <option>$</option>
-                    </select>--}}
+                    </select>
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Search" aria-label="Search">
                         <span class="input-group-btn">
                                 <button class="btn btn-secondary" type="button"><i class="icon-magnifier"></i></button>
                                 </span>
                     </div>
-                </div>
+                </div>  --}}
             </div>
             <div class="col-lg-6">
                 <div class="top_header_middle">
@@ -89,15 +107,15 @@ $categories = DB::table('categories')->get();
                         <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
                     </ul>
                     <ul class="top_right">
-                        <li class="user"><a href="#"><i class="icon-user icons"></i></a></li>
-                        <li class="cart"><a href="#"><i class="icon-handbag icons"></i></a></li>
-                        <li class="h_price">
+                        {{--  <li class="user"><a href="#"><i class="icon-user icons"></i></a></li>  --}}
+                        <li class="cart"><a href="{{route('view_cart')}}"><i class="icon-handbag icons"></i></a></li>
+                        {{--  <li class="h_price">
                             <select class="selectpicker">
                                 <option>$0.00</option>
                                 <option>$0.00</option>
                                 <option>$0.00</option>
                             </select>
-                        </li>
+                        </li>  --}}
                     </ul>
                 </div>
             </div>
@@ -234,12 +252,12 @@ $categories = DB::table('categories')->get();
     $(document).ready(function () {
         $(document.body).delegate('#category_id', 'change', function () {
             var cat = $("#category_id").val();
-            window.location = '/category/' + cat;
+            window.location = '/products/category/' + cat;
         });
         $(document.body).delegate('#limit_div', 'change', function () {
             var cat = $("#category_id").val();
             var limit = $("#limit_div").val();
-            window.location = '/category/' + cat + '/' + limit;
+            window.location = '/products/category/' + cat + '/' + limit;
         });
     });
 </script>

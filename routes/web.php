@@ -8,7 +8,7 @@
 //});
 
 Route::get('/', 'Front\HomeController@home')->name('home_page');
-Route::get('/category/{id}/{limit?}', 'Front\ProductsController@categoryProducts')->name('category_products');
+Route::get('/products/category/{id}/{limit?}', 'Front\ProductsController@categoryProducts')->name('category_products');
 Route::get('/view-product/{id}', 'Front\ProductsController@viewProduct')->name('view_product');
 
 /** Cart */

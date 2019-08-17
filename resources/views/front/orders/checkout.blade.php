@@ -1,4 +1,4 @@
-@extends('front.layout.cart')
+@extends('front.layout.master')
 @section('header_js')
     @parent
     <script>
@@ -66,8 +66,8 @@
                             <div class="billing_details">
                                 <h2 class="reg_title">Billing Detail</h2>
                                 <form method="POST" action="{{ route('add_order') }}" aria-label="{{ __('Register') }}" class="billing_inner row">
-                                @csrf    
-                                <div class="col-lg-12">
+                                @csrf
+                                    {{--  <div class="col-lg-12">
                                         <div class="form-group">
                                             <label for="cun">Country <span>*</span></label>
                                             <select class="selectpicker" id="cun">
@@ -76,14 +76,14 @@
                                                 <option>United State America (USA)</option>
                                             </select>
                                         </div>
-                                    </div>
+                                    </div>  --}}
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label for="name">First Name <span>*</span></label>
-                                            <input type="text" class="form-control" id="name" aria-describedby="name" placeholder="">
+                                            <label for="name"> Name <span>*</span></label>
+                                            <input type="text" class="form-control" name="name" aria-describedby="name" placeholder="">
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    {{--  <div class="col-lg-12">
                                         <div class="form-group">
                                             <label for="last">Last Name <span>*</span></label>
                                             <input type="text" class="form-control" id="last" aria-describedby="last">
@@ -98,87 +98,36 @@
                                                 <option>United State America (USA)</option>
                                             </select>
                                         </div>
-                                    </div>
+                                    </div>  --}}
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label for="address">Address <span>*</span></label>
-                                            <input type="text" class="form-control" id="address" aria-describedby="address">
-                                            <input type="text" class="form-control" id="address2" aria-describedby="address">
+                                            <input type="text" class="form-control" name="address" aria-describedby="address">
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label for="ctown">City / Town <span>*</span></label>
-                                            <select class="selectpicker" id="ctown">
-                                                <option>United State America (USA)</option>
-                                                <option>Bangladesh (BAN)</option>
-                                                <option>United State America (USA)</option>
-                                            </select>
-                                        </div>
-                                    </div>
+
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label for="email">Email <span>*</span></label>
-                                            <input type="email" class="form-control" id="email" aria-describedby="email">
+                                            <input type="email" class="form-control" name="email" aria-describedby="email">
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label for="phone">Phone <span>*</span></label>
-                                            <input type="text" class="form-control" id="phone" aria-describedby="phone">
+                                            <label for="phone">Mobile <span>*</span></label>
+                                            <input type="text" class="form-control" name="mobile" aria-describedby="mobile">
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <div class="creat_account">
-                                                <input type="checkbox" id="f-option" name="selector">
-                                                <label for="f-option">Ship to a different address?</label>
-                                                <div class="check"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label for="cunt">Country <span>*</span></label>
-                                            <select class="selectpicker" id="cunt">
-                                                <option>United State America (USA)</option>
-                                                <option>Bangladesh (BAN)</option>
-                                                <option>United State America (USA)</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label for="name2">First Name <span>*</span></label>
-                                            <input type="text" class="form-control" id="name2" aria-describedby="name2" placeholder="">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label for="last2">Last Name <span>*</span></label>
-                                            <input type="text" class="form-control" id="last2" aria-describedby="last2">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label for="company">Company Name <span>*</span></label>
-                                            <input type="text" class="form-control" id="company" aria-describedby="company">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label for="city">City / Town <span>*</span></label>
-                                            <input type="text" class="form-control" id="city" aria-describedby="city">
-                                        </div>
-                                    </div>
+
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label for="order">Order Notes <span>*</span></label>
-                                            <textarea class="form-control" id="order" rows="3"></textarea>
+                                            <textarea class="form-control" id="order" name="note" rows="3"></textarea>
                                         </div>
                                     </div>
-                                <button type="submit" value="submit" class="btn subs_btn form-control">place order</button>
-
+                                    <div class="col-lg-12">
+                                        <button type="submit" value="submit" class="btn subs_btn form-control">place order</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -190,7 +139,7 @@
                                     @foreach($items as $item)
                                     <h5>{{$item->product->name}} <span>${{$item->sub_total}}</span></h5>
                                     @endforeach
-                                       
+
                                         <h4>Cart Subtotal <span>${{$cart->sub_total}}</span></h4>
                                         <h3><span class="normal_text">Order Totals</span> <span>${{$cart->total_payble}}</span></h3>
                                     </div>
@@ -206,7 +155,7 @@
 
                                             <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
                                                 <div class="card-body">
-                                                    Lorem Ipsum is simply dummy text of the print-ing and typesetting industry. Lorem Ipsum has been the industry's. 
+                                                    Lorem Ipsum is simply dummy text of the print-ing and typesetting industry. Lorem Ipsum has been the industry's.
                                                 </div>
                                             </div>
                                         </div>
@@ -220,7 +169,7 @@
                                             </div>
                                             <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
                                                 <div class="card-body">
-                                                    Lorem Ipsum is simply dummy text of the print-ing and typesetting industry. Lorem Ipsum has been the industry's. 
+                                                    Lorem Ipsum is simply dummy text of the print-ing and typesetting industry. Lorem Ipsum has been the industry's.
                                                 </div>
                                             </div>
                                         </div>
@@ -234,7 +183,7 @@
                                             </div>
                                             <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
                                                 <div class="card-body">
-                                                    Lorem Ipsum is simply dummy text of the print-ing and typesetting industry. Lorem Ipsum has been the industry's. 
+                                                    Lorem Ipsum is simply dummy text of the print-ing and typesetting industry. Lorem Ipsum has been the industry's.
                                                 </div>
                                             </div>
                                         </div>
@@ -248,13 +197,12 @@
                                             </div>
                                             <div id="collapsefour" class="collapse" role="tabpanel" aria-labelledby="headingfour" data-parent="#accordion">
                                                 <div class="card-body">
-                                                    Lorem Ipsum is simply dummy text of the print-ing and typesetting industry. Lorem Ipsum has been the industry's. 
+                                                    Lorem Ipsum is simply dummy text of the print-ing and typesetting industry. Lorem Ipsum has been the industry's.
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit" value="submit" class="btn subs_btn form-control">place order</button>
                             </div>
                         </div>
                     </div>

@@ -13,6 +13,7 @@ use App\Model\Category;
 use App\Model\SubCategory;
 use App\Model\SubSubCategory;
 use App\Model\Brand;
+use App\Model\Image;
 
 class ProductsController extends Controller
 {
@@ -27,8 +28,12 @@ class ProductsController extends Controller
         $products = DB::table('products')->where('category_id', $catId)->paginate($limit);
         $productCount = DB::table('products')->where('category_id', $catId)->get();
         foreach ($products as $product) {
-            //$product->name = '<a href="/view-product/'.$product->id.'">'.$product->name.'</a>';
-            $product->image = empty($product->image_id != null) == true ? 'default.gif' : Product::find($product->id)->image->large;
+            $image = empty($product->image_id) == true ? 'product.gif' : Image::find($product->image_id)->large;
+            if (file_exists('image/products/'.$image)) {
+                $product->image = '/image/products/'.$image;
+            }else{
+                $product->image = '/image/products/product.gif';
+            }
             $product->category = empty($product->category_id) == true ? '' : Product::find($product->id)->category->name;
             $product->color = empty($this->color) == true ? '' : $colorObj->getColorName($this->color);
         }
@@ -39,10 +44,8 @@ class ProductsController extends Controller
 
         $from = ($page * $limit) - ($limit - 1);
         $to = (($page * $limit) > $data['total']) == true ? $data['total'] : ($page * $limit);
-
         $data['from'] = $from;
         $data['to'] = $to;
-        //dd($products);
         return view('front.products.products', $data);
     }
 

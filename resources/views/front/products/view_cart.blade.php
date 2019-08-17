@@ -1,4 +1,4 @@
-@extends('front.layout.cart')
+@extends('front.layout.master')
 @section('header_js')
     @parent
     <script>
@@ -91,7 +91,7 @@
                                     <th scope="row">
                                     </th>
                                 </tr>
-                                <tr class="last">
+                                {{--  <tr class="last">
                                     <th scope="row">
                                         <img src="/img/icon/cart-icon.png" alt="">
                                     </th>
@@ -110,7 +110,7 @@
                                         <h3>update cart</h3>
                                     </td>
                                     <td></td>
-                                </tr>
+                                </tr>  --}}
                                 </tbody>
                             </table>
                         </div>
@@ -125,10 +125,10 @@
                                     <h5>Subtotal</h5>
                                 </div>
                                 <div class="media-body">
-                                    <h6>$14</h6>
+                                    <h6>{{ $cart->sub_total }}</h6>
                                 </div>
                             </div>
-                            <div class="media">
+                            {{--  <div class="media">
                                 <div class="d-flex">
                                     <h5>Shipping</h5>
                                 </div>
@@ -148,7 +148,7 @@
                                         <option>Calculate Shipping</option>
                                     </select>
                                 </div>
-                            </div>
+                            </div>  --}}
                         </div>
                         <div class="total_amount row m0 row_disable">
                             <div class="float-left">
