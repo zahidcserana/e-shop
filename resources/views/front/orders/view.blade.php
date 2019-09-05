@@ -28,9 +28,16 @@
                             <table class="table">
                                 <tbody>
                                     <tr style="background-color: antiquewhite">
-                                        {{--  <th scope="row">
-                                            <img src="img/icon/close-icon.png" alt="">
-                                        </th>  --}}
+                                      <td>
+                                          <div class="media">
+                                              <div class="d-flex">
+
+                                              </div>
+                                              <div class="media-body">
+                                                  <h4>Image</h4>
+                                              </div>
+                                          </div>
+                                      </td>
                                         <td>
                                             <div class="media">
                                                 <div class="d-flex">
@@ -43,7 +50,7 @@
                                         </td>
                                         <td><p class="red">Unit Price</p></td>
                                         <td>
-                                            <div class="quantity">
+                                            <div class="">
                                                 <h6>Quantity</h6>
                                             </div>
                                         </td>
@@ -59,6 +66,10 @@
                                                 <div class="d-flex">
                                                     <img src="{{ $item->image }}" alt="" width="80">
                                                 </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="media">
                                                 <div class="media-body">
                                                     <h4>{{ $item->product->name }}</h4>
                                                 </div>

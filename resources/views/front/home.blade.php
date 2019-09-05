@@ -152,8 +152,8 @@
                     <div class="f_add_item">
                         <div class="f_add_img"><img class="img-fluid" src="{{asset('front/img/feature-add/f-add-8.jpg')}}" alt=""></div>
                         <div class="f_add_hover">
-                            <h4>Best {{ $categories[2]->name }} <br />Collection</h4>
-                            <a class="add_btn" href="{{ url('/category/'.$categories[2]->id) }}">Shop Now <i class="arrow_right"></i></a>
+                            <h4>Best {{ $categories[2]->name ?? 'New' }} <br />Collection</h4>
+                            <a class="add_btn" href="{{ url('/category/') }}/{{ $categories[2]->id ?? 1 }}">Shop Now <i class="arrow_right"></i></a>
                         </div>
                         <div class="sale">Sale</div>
                     </div>

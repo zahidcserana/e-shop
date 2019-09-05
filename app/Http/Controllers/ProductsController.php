@@ -55,11 +55,10 @@ class ProductsController extends Controller
         if ($id != null) {
             $product = DB::table('products')->where('id', $id)->first();
             $images = DB::table('images')->where('product_id', $id)->get();
-            //
         }
         $categories = DB::table('categories')->get();
         $brands = DB::table('brands')->get();
-        $subCategories = DB::table('sub_categories')->get();
+        $subCategories = $product ? DB::table('sub_categories')->where('category_id', $product->category_id)->get() : DB::table('sub_categories')->get();
         $subSubCategories = DB::table('sub_sub_categories')->get();
         $sizes = DB::table('sizes')->get();
         $colors = DB::table('colors')->get();
@@ -74,7 +73,6 @@ class ProductsController extends Controller
             'sub_sub_categories' => $subSubCategories,
             'images' => $images,
         );
-        // dd($product->id);
         return view('products.add', $data);
     }
     public function add(Request $request)

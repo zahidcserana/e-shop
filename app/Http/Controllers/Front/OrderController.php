@@ -42,7 +42,6 @@ class OrderController extends Controller
         if (empty($request->session()->get('cart_id'))) {
             return redirect()->route('home_page');
         }
-
         $cartId = $request->session()->get('cart_id');
         $cart = DB::table('carts')->where('id', $cartId)->first();
         $data = $request->except('token');
@@ -57,10 +56,7 @@ class OrderController extends Controller
             'customer_id' => $customerId,
         );
         $orderId = DB::table('orders')->insertGetid($orderInput);
-
-
         $cartItems = DB::table('cart_items')->where('cart_id', $cartId)->get();
-
         foreach ($cartItems as $item) {
             $itemInput  = array(
                 'order_id' => $orderId,

@@ -73,14 +73,14 @@
                         </div> -->
                         @foreach($images as $image)
                         @if(file_exists('image/products/'.$image->original))
-                        
+
                             <div class="m-messenger__wrapper">
                                 <div class="m-messenger__message m-messenger__message--out">
                                     <div class="m-messenger__message-body">
                                         <div class="m-messenger__message-arrow"></div>
                                         <div class="m-messenger__message-content">
                                             <div class="m-messenger__message-text">
-                                            
+
                                                 <img src="{{asset('image/products/'.$image->original)}}"
                                                      class="img-thumbnail"
                                                      id="image_div" alt="Cinque Terre" width="304" height="236">
