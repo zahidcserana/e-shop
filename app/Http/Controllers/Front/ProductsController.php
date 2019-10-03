@@ -54,20 +54,20 @@ class ProductsController extends Controller
         $product = DB::table('products')->where('id', $id)->first();
         $images = DB::table('images')->select('large')->where('product_id', $id)->get();
         $product->image = empty($product->image_id != null) == true ? 'default.gif' : Product::find($product->id)->image->large;
-        $colorObj = new Color();
-        $product->color = empty($product->color) == true?[]:$colorObj->getColorName($product->color);
-        $sizeObj = new Size();
-        $product->size = empty($product->size) == true?[]:$sizeObj->getSizeName($product->size);
+        // $colorObj = new Color();
+        // $product->color = empty($product->color) == true?[]:$colorObj->getColorName($product->color);
+        // $sizeObj = new Size();
+        // $product->size = empty($product->size) == true?[]:$sizeObj->getSizeName($product->size);
 
-        $product->category_id = Category::find($product->category_id);
-        $product->sub_category_id = SubCategory::find($product->sub_category_id);
-        $product->sub_sub_category_id = SubSubCategory::find($product->sub_sub_category_id);
+        $product->category = Category::find($product->category_id);
+        $product->sub_category = SubCategory::find($product->sub_category_id);
+        //$product->sub_sub_category_id = SubSubCategory::find($product->sub_sub_category_id);
         $product->brand_id = Brand::find($product->brand_id);
 
 
         $data['product'] = $product;
         $data['images'] = $images;
-        //dd($product);
+        // dd($product);
         return view('front.products.view_product', $data);
     }
 }

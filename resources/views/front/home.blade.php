@@ -160,7 +160,7 @@
                         <div class="f_add_img"><img class="img-fluid" src="{{asset('front/img/feature-add/f-add-8.jpg')}}" alt=""></div>
                         <div class="f_add_hover">
                             <h4>Best {{ $categories[0]->name }} <br />Collection</h4>
-                            <a class="add_btn" href="{{ url('/category/'.$categories[0]->id) }}">Shop Now <i class="arrow_right"></i></a>
+                            <a class="add_btn" href="{{ url('/products/category/'.$categories[0]->id) }}">Shop Now <i class="arrow_right"></i></a>
                         </div>
                         <div class="sale">Sale</div>
                     </div>
@@ -170,7 +170,7 @@
                         <div class="f_add_img"><img class="img-fluid" src="{{asset('front/img/feature-add/f-add-8.jpg')}}" alt=""></div>
                         <div class="f_add_hover">
                             <h4>Best {{ $categories[1]->name }} <br />Collection</h4>
-                            <a class="add_btn" href="{{ url('/category/'.$categories[1]->id) }}">Shop Now <i class="arrow_right"></i></a>
+                            <a class="add_btn" href="{{ url('/products/category/'.$categories[1]->id) }}">Shop Now <i class="arrow_right"></i></a>
                         </div>
                         <div class="off">10% off</div>
                     </div>
@@ -180,7 +180,7 @@
                         <div class="f_add_img"><img class="img-fluid" src="{{asset('front/img/feature-add/f-add-8.jpg')}}" alt=""></div>
                         <div class="f_add_hover">
                             <h4>Best {{ $categories[2]->name ?? 'New' }} <br />Collection</h4>
-                            <a class="add_btn" href="{{ url('/category/') }}/{{ $categories[2]->id ?? 1 }}">Shop Now <i class="arrow_right"></i></a>
+                            <a class="add_btn" href="{{ url('/products/category/') }}/{{ $categories[2]->id ?? 1 }}">Shop Now <i class="arrow_right"></i></a>
                         </div>
                         <div class="sale">Sale</div>
                     </div>

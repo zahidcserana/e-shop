@@ -1,5 +1,5 @@
 
-@extends('front.layout.product')
+@extends('front.layout.master')
 
 @section('front_content')
 
@@ -11,7 +11,7 @@
                     <div class="product_details_slider">
                         <div id="product_slider" class="rev_slider" data-version="5.3.1.6">
                             <ul>
-                            @if(count($images) > 0)
+                            @if(sizeof($images) > 0)
                                 <!-- SLIDE  -->
                                     <li data-index="rs-137221490" data-transition="scaledownfrombottom"
                                         data-slotamount="7"
@@ -29,7 +29,7 @@
                                         <!-- LAYERS -->
                                     </li>
                             @endif
-                            @if(count($images) > 1)
+                            @if(sizeof($images) > 1)
                                 <!-- SLIDE  -->
                                     <li data-index="rs-136228343" data-transition="scaledownfrombottom"
                                         data-slotamount="7"
@@ -46,7 +46,7 @@
                                         <!-- LAYERS -->
                                     </li>
                             @endif
-                            @if(count($images) > 2)
+                            @if(sizeof($images) > 2)
                                 <!-- SLIDE  -->
                                     <li data-index="rs-135960434" data-transition="scaledownfrombottom"
                                         data-slotamount="7"
@@ -65,7 +65,7 @@
 
                                     </li>
                             @endif
-                            @if(count($images) > 3)
+                            @if(sizeof($images) > 3)
                                 <!-- SLIDE  -->
                                     <li data-index="rs-134008155" data-transition="scaledownfrombottom"
                                         data-slotamount="7"
@@ -83,17 +83,18 @@
 
                                     </li>
                             @endif
-                            @if(count($images) > 4)
+                            @if(sizeof($images) > 4)
                                 <!-- SLIDE  -->
-                                    <li data-index="rs-134774977" data-transition="scaledownfrombottom"
+                                    <li data-index="rs-134208766" data-transition="scaledownfrombottom"
                                         data-slotamount="7"
                                         data-easein="Power3.easeInOut" data-easeout="Power3.easeInOut"
                                         data-masterspeed="1500"
                                         data-thumb="{{asset('image/products/'.$images[4]->large)}}"
-                                        data-rotate="0" data-saveperformance="off" data-title="Paris Poetry"
-                                        data-param1="28/07/2015" data-description="">
+                                        data-rotate="0" data-saveperformance="off"
+                                        data-title="Creativity Room - New Fubiz 2015" data-param1="22/07/2015"
+                                        data-description="">
                                         <!-- MAIN IMAGE -->
-                                        <img src="{{asset('image/products/'.$images[41]->large)}}" alt=""
+                                        <img src="{{asset('image/products/'.$images[4]->large)}}" alt=""
                                              data-bgposition="center center" data-bgfit="cover"
                                              data-bgrepeat="no-repeat"
                                              data-bgparallax="5" class="rev-slidebg" data-no-retina>
@@ -101,7 +102,7 @@
 
                                     </li>
                             @endif
-                            @if(count($images) > 5)
+                            @if(sizeof($images) > 5)
                                 <!-- SLIDE  -->
                                     <li data-index="rs-134208766" data-transition="scaledownfrombottom"
                                         data-slotamount="7"
@@ -120,7 +121,7 @@
 
                                     </li>
                             @endif
-                            @if(count($images) > 6)
+                            @if(sizeof($images) > 6)
                                 <!-- SLIDE  -->
                                     <li data-index="rs-132884121" data-transition="scaledownfrombottom"
                                         data-slotamount="7"
@@ -139,7 +140,7 @@
 
                                     </li>
                             @endif
-                            @if(count($images) > 7)
+                            @if(sizeof($images) > 7)
                                 <!-- SLIDE  -->
                                     <li data-index="rs-130740141" data-transition="scaledownfrombottom"
                                         data-slotamount="7"
@@ -180,28 +181,7 @@
                         <h4>${{$product->price}}</h4>
                         <p>{{$product->description}}</p>
                         <div class="p_color">
-                            <h4 class="p_d_title">color <span>*</span></h4>
-                            <select class="selectpicker">
-                                @foreach($product->color as $key=>$value)
-                                    <option value="{{$key}}">{{$value}}</option>
-                                @endforeach
-                            </select>
-                            {{--<ul class="color_list">
-                                <li><a href="#"></a></li>
-                                <li><a href="#"></a></li>
-                                <li><a href="#"></a></li>
-                                <li><a href="#"></a></li>
-                                <li><a href="#"></a></li>
-                                <li><a href="#"></a></li>
-                            </ul>--}}
-                        </div>
-                        <div class="p_color">
-                            <h4 class="p_d_title">size <span>*</span></h4>
-                            <select class="selectpicker">
-                                @foreach($product->size as $key=>$value)
-                                    <option value="{{$key}}">{{$value}}</option>
-                                @endforeach
-                            </select>
+                            <h4 class="p_d_title">{{ $product->sub_category->name }} ->  {{ $product->category->name }}<span></span></h4>
                         </div>
                         <div class="quantity">
                             <div class="custom">
@@ -238,10 +218,10 @@
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                     <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
                        aria-controls="nav-home" aria-selected="true">Product Description</a>
-                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
-                       aria-controls="nav-profile" aria-selected="false">Reviews (1)</a>
-                    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
-                       aria-controls="nav-contact" aria-selected="false">Tags</a>
+                    <!-- <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
+                       aria-controls="nav-profile" aria-selected="false">Reviews (1)</a> -->
+                    <!-- <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
+                       aria-controls="nav-contact" aria-selected="false">Tags</a> -->
                     <a class="nav-item nav-link" id="nav-info-tab" data-toggle="tab" href="#nav-info" role="tab"
                        aria-controls="nav-info" aria-selected="false">additional information</a>
                     <a class="nav-item nav-link" id="nav-gur-tab" data-toggle="tab" href="#nav-gur" role="tab"
