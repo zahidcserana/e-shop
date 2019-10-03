@@ -52,7 +52,7 @@ class CartsController extends Controller
         $this->_updateCart($cartItem->cart_id);
         $item = DB::table('cart_items')->where('id', $data['item_id'])->first();
 
-        echo json_encode(array('success' => true, 'data' => $item));
+        echo json_encode(array('success' => true, 'data' => $item, 'cart' => DB::table('carts')->where('id', $cartItem->cart_id)->first()));
     }
 
     private function _updateCart($cartId)
@@ -80,20 +80,20 @@ class CartsController extends Controller
         }
 
         $cartId = $request->session()->get('cart_id');
-            $cart = DB::table('carts')->where('id', $cartId)->first();
-            $cartItems = DB::table('cart_items')->where('cart_id', $cartId)->get();
+        $cart = DB::table('carts')->where('id', $cartId)->first();
+        $cartItems = DB::table('cart_items')->where('cart_id', $cartId)->get();
 
         foreach ($cartItems as $cartItem) {
             $cartItem->product = Product::find($cartItem->product_id);
-            $image = empty($cartItem->product->image_id) == true ? 'product.gif' : Image::find($cartItem->product->image_id)->large; 
-           
+            $image = empty($cartItem->product->image_id) == true ? 'product.gif' : Image::find($cartItem->product->image_id)->large;
+
             if (file_exists('image/products/'.$image)) {
                 $cartItem->image = 'image/products/'.$image;
             }else{
-               
+
                 $cartItem->image = 'image/products/product.gif';
             }
-            
+
         }
         $data['items'] = $cartItems;
         $data['cart'] = $cart;

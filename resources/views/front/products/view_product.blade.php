@@ -1,3 +1,4 @@
+
 @extends('front.layout.product')
 
 @section('front_content')

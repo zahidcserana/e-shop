@@ -1,8 +1,10 @@
 <?php
 
 use App\Model\Category;
-
+use App\Model\Cart;
 $categories = DB::table('categories')->get();
+
+$cartItemNumber = Session::get('cart_id') ? DB::table('cart_items')->where('cart_id', Session::get('cart_id'))->count() : 0;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +15,7 @@ $categories = DB::table('categories')->get();
 
     <link rel="icon" href="{{asset('front/img/fav-icon.png')}}" type="image/x-icon"/>
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>DREAM FASHION</title>
+    <title>{{ env('TITLE') }}</title>
 
     <!-- Icon css link -->
     <link href="{{asset('front/css/font-awesome.min.css')}}" rel="stylesheet">
@@ -92,8 +94,8 @@ $categories = DB::table('categories')->get();
             </div>
             <div class="col-lg-6">
                 <div class="top_header_middle">
-                    <a href="#"><i class="fa fa-phone"></i> Call Us: <span>+880 1970887754</span></a>
-                    <a href="#"><i class="fa fa-envelope"></i> Email: <span>info@dreamsoftbd.com</span></a>
+                    <a href="#"><i class="fa fa-phone"></i> Call Us: <span>{{ env('PHONE') }}</span></a>
+                    <a href="#"><i class="fa fa-envelope"></i> Email: <span>{{ env('EMAIL') }}</span></a>
                     <a href="{{route('home_page')}}"><img src="{{asset('front/img/df-2.gif')}}" alt=""></a>
                 </div>
             </div>
@@ -108,7 +110,7 @@ $categories = DB::table('categories')->get();
                     </ul>
                     <ul class="top_right">
                         {{--  <li class="user"><a href="#"><i class="icon-user icons"></i></a></li>  --}}
-                        <li class="cart"><a href="{{route('view_cart')}}"><i class="icon-handbag icons"></i></a></li>
+                        <li class="cart"><a href="{{route('view_cart')}}"><span style="color: red;font-size: 17px;font-weight: bold">{{ $cartItemNumber }} &nbsp;</span><i class="icon-handbag icons"></i></a></li>
                         {{--  <li class="h_price">
                             <select class="selectpicker">
                                 <option>$0.00</option>

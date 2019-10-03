@@ -8,7 +8,7 @@ $routeName = Route::getCurrentRoute()->getName();
 	<head>
 		<meta charset="utf-8" />
 		<title>
-			DREAM-FASHION | Dashboard
+			{{ env('TITLE') }} | Dashboard
 		</title>
 		<meta name="description" content="Latest updates and statistic charts">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,7 +24,7 @@ $routeName = Route::getCurrentRoute()->getName();
           });
 		</script>
 		<!--end::Web font -->
-        <!--begin::Base Styles -->  
+        <!--begin::Base Styles -->
         <!--begin::Page Vendors -->
         <link href="{{ asset('assets/vendors/custom/fullcalendar/fullcalendar.bundle.css') }}" rel="stylesheet">
 		<!--end::Page Vendors -->
@@ -77,6 +77,7 @@ $routeName = Route::getCurrentRoute()->getName();
 							<button class="m-aside-header-menu-mobile-close  m-aside-header-menu-mobile-close--skin-dark " id="m_aside_header_menu_mobile_close_btn">
 								<i class="la la-close"></i>
 							</button>
+							<!--
 							<div id="m_header_menu" class="m-header-menu m-aside-header-menu-mobile m-aside-header-menu-mobile--offcanvas  m-header-menu--skin-light m-header-menu--submenu-skin-light m-aside-header-menu-mobile--skin-dark m-aside-header-menu-mobile--submenu-skin-dark "  >
 								<ul class="m-menu__nav  m-menu__nav--submenu-arrow ">
 									<li class="m-menu__item  m-menu__item--submenu m-menu__item--rel"  data-menu-submenu-toggle="click" aria-haspopup="true">
@@ -659,14 +660,14 @@ $routeName = Route::getCurrentRoute()->getName();
 										</div>
 									</li>
 								</ul>
-							</div>
+							</div> -->
+
 							<!-- END: Horizontal Menu -->								<!-- BEGIN: Topbar -->
 							<div id="m_header_topbar" class="m-topbar  m-stack m-stack--ver m-stack--general">
 								<div class="m-stack__item m-topbar__nav-wrapper">
 									<ul class="m-topbar__nav m-nav m-nav--inline">
-										<li class="
-	m-nav__item m-dropdown m-dropdown--large m-dropdown--arrow m-dropdown--align-center m-dropdown--mobile-full-width m-dropdown--skin-light	m-list-search m-list-search--skin-light" 
-	data-dropdown-toggle="click" data-dropdown-persistent="true" id="m_quicksearch" data-search-type="dropdown">
+										<!--
+										<li class="m-nav__item m-dropdown m-dropdown--large m-dropdown--arrow m-dropdown--align-center m-dropdown--mobile-full-width m-dropdown--skin-light	m-list-search m-list-search--skin-light" data-dropdown-toggle="click" data-dropdown-persistent="true" id="m_quicksearch" data-search-type="dropdown">
 											<a href="#" class="m-nav__link m-dropdown__toggle">
 												<span class="m-nav__link-icon">
 													<i class="flaticon-search-1"></i>
@@ -962,7 +963,8 @@ $routeName = Route::getCurrentRoute()->getName();
 													</div>
 												</div>
 											</div>
-										</li>
+										</li> -->
+
 										<li class="m-nav__item m-topbar__user-profile m-topbar__user-profile--img m-dropdown m-dropdown--medium m-dropdown--arrow m-dropdown--header-bg-fill m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" data-dropdown-toggle="click">
 											<a href="#" class="m-nav__link m-dropdown__toggle">
 												<span class="m-topbar__userpic">
@@ -1084,7 +1086,7 @@ $routeName = Route::getCurrentRoute()->getName();
 					</div>
 				</div>
 			</header>
-			<!-- END: Header -->		
+			<!-- END: Header -->
 		<!-- begin::Body -->
 			<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
 				<!-- BEGIN: Left Aside -->
@@ -1093,7 +1095,7 @@ $routeName = Route::getCurrentRoute()->getName();
 				</button>
 				<div id="m_aside_left" class="m-grid__item	m-aside-left  m-aside-left--skin-dark ">
 					<!-- BEGIN: Aside Menu -->
-                     @include('layouts.aside')
+                @include('layouts.aside')
 					<!-- END: Aside Menu -->
 				</div>
 				<!-- END: Left Aside -->
@@ -1159,14 +1161,14 @@ $routeName = Route::getCurrentRoute()->getName();
 		<!-- end:: Page -->
     		        <!-- begin::Quick Sidebar -->
 		@yield('side_bar')
-		<!-- end::Quick Sidebar -->		    
+		<!-- end::Quick Sidebar -->
 	    <!-- begin::Scroll Top -->
 		<div class="m-scroll-top m-scroll-top--skin-top" data-toggle="m-scroll-top" data-scroll-offset="500" data-scroll-speed="300">
 			<i class="la la-arrow-up"></i>
 		</div>
 		<!-- end::Scroll Top -->		    <!-- begin::Quick Nav -->
-		<ul class="m-nav-sticky" style="margin-top: 30px;">
-			<!--
+		<!-- <ul class="m-nav-sticky" style="margin-top: 30px;">
+
 			<li class="m-nav-sticky__item" data-toggle="m-tooltip" title="Showcase" data-placement="left">
 				<a href="">
 					<i class="la la-eye"></i>
@@ -1177,7 +1179,7 @@ $routeName = Route::getCurrentRoute()->getName();
 					<i class="la la-comments-o"></i>
 				</a>
 			</li>
-			-->
+
 			<li class="m-nav-sticky__item" data-toggle="m-tooltip" title="Purchase" data-placement="left">
 				<a href="https://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes" target="_blank">
 					<i class="la la-cart-arrow-down"></i>
@@ -1193,15 +1195,15 @@ $routeName = Route::getCurrentRoute()->getName();
 					<i class="la la-life-ring"></i>
 				</a>
 			</li>
-		</ul>
-		<!-- begin::Quick Nav -->	
+		</ul> -->
+		<!-- begin::Quick Nav -->
     	<!--begin::Base Scripts -->
         <script src="{{ asset('assets/vendors/base/vendors.bundle.js') }}" type="text/javascript"></script>
         <script src="{{ asset('assets/demo/demo3/base/scripts.bundle.js') }}" type="text/javascript"></script>
-		<!--end::Base Scripts -->   
+		<!--end::Base Scripts -->
         <!--begin::Page Vendors -->
         <script src="{{ asset('assets/vendors/custom/fullcalendar/fullcalendar.bundle.js') }}" type="text/javascript"></script>
-		<!--end::Page Vendors -->  
+		<!--end::Page Vendors -->
         <!--begin::Page Snippets -->
         <script src="{{ asset('assets/app/js/dashboard.js') }}" type="text/javascript"></script>
         <script src="{{ asset('js/custom.js') }}" type="text/javascript"></script>

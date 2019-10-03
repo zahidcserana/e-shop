@@ -1,5 +1,31 @@
 @extends('front.layout.master')
-
+@section('header_js')
+    @parent
+    <script>
+        function addToCart(id,price) {
+            $.ajax({
+                url: "{{ route('add_to_cart') }}",
+                type: 'POST',
+                data: {_token: "{{ csrf_token() }}", product_id: id,price:price},
+                success: function (response) {
+                    var response = $.parseJSON(response);
+                    if (response.success) {
+                        $("#cart-msg").show();
+                    }
+                }
+            });
+        }
+    </script>
+    <style>
+        #cart-msg {
+            margin-bottom: 5px;
+            width: 30%;
+            text-align: center;
+            font-size: 18px;
+            display: none;
+        }
+    </style>
+@endsection
 @section('front_content')
 
     <!--================Slider Area =================-->
@@ -128,6 +154,7 @@
     <section class="feature_add_area">
         <div class="container">
             <div class="row feature_inner">
+              <div class="alert-success" id="cart-msg">Successfully added</div>
                 <div class="col-lg-4">
                     <div class="f_add_item">
                         <div class="f_add_img"><img class="img-fluid" src="{{asset('front/img/feature-add/f-add-8.jpg')}}" alt=""></div>
@@ -181,7 +208,8 @@
                         <div class="l_p_text">
                             <ul>
                                 <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li>
-                                <li><a class="add_cart_btn" href="#">Add To Cart</a></li>
+                                <li><a class="add_cart_btn" onclick="addToCart('{{$products[0]->id}}','{{$products[0]->price}}')"
+                                       href="javascript:void(0);">Add To Cart</a></li>
                                 <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
                             </ul>
                             <h4>{{ $products[0]->name }}</h4>
@@ -197,7 +225,8 @@
                         <div class="l_p_text">
                             <ul>
                                 <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li>
-                                <li><a class="add_cart_btn" href="#">Add To Cart</a></li>
+                                <li><a class="add_cart_btn" onclick="addToCart('{{$products[1]->id}}','{{$products[1]->price}}')"
+                                       href="javascript:void(0);">Add To Cart</a></li>
                                 <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
                             </ul>
                             <h4>{{ $products[1]->name }}</h4>
@@ -217,7 +246,8 @@
                         <div class="l_p_text">
                             <ul>
                                 <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li>
-                                <li><a class="add_cart_btn" href="#">Add To Cart</a></li>
+                                <li><a class="add_cart_btn" onclick="addToCart('{{$products[2]->id}}','{{$products[2]->price}}')"
+       href="javascript:void(0);">Add To Cart</a></li>
                                 <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
                             </ul>
                             <h4>{{ $products[2]->name }}</h4>
@@ -233,7 +263,8 @@
                         <div class="l_p_text">
                             <ul>
                                 <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li>
-                                <li><a class="add_cart_btn" href="#">Add To Cart</a></li>
+                                <li><a class="add_cart_btn" onclick="addToCart('{{$products[3]->id}}','{{$products[3]->price}}')"
+       href="javascript:void(0);">Add To Cart</a></li>
                                 <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
                             </ul>
                             <h4>{{ $products[3]->name }}</h4>
@@ -253,7 +284,8 @@
                         <div class="l_p_text">
                             <ul>
                                 <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li>
-                                <li><a class="add_cart_btn" href="#">Add To Cart</a></li>
+                                <li><a class="add_cart_btn" onclick="addToCart('{{$products[4]->id}}','{{$products[4]->price}}')"
+       href="javascript:void(0);">Add To Cart</a></li>
                                 <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
                             </ul>
                             <h4>{{ $products[4]->name }}</h4>
@@ -269,7 +301,8 @@
                         <div class="l_p_text">
                             <ul>
                                 <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li>
-                                <li><a class="add_cart_btn" href="#">Add To Cart</a></li>
+                                <li><a class="add_cart_btn" onclick="addToCart('{{$products[5]->id}}','{{$products[5]->price}}')"
+       href="javascript:void(0);">Add To Cart</a></li>
                                 <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
                             </ul>
                             <h4>{{ $products[5]->name }}</h4>
@@ -289,7 +322,8 @@
                         <div class="l_p_text">
                             <ul>
                                 <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li>
-                                <li><a class="add_cart_btn" href="#">Add To Cart</a></li>
+                                <li><a class="add_cart_btn" onclick="addToCart('{{$products[6]->id}}','{{$products[6]->price}}')"
+       href="javascript:void(0);">Add To Cart</a></li>
                                 <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
                             </ul>
                             <h4>{{ $products[6]->name }}</h4>
@@ -305,7 +339,8 @@
                         <div class="l_p_text">
                             <ul>
                                 <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li>
-                                <li><a class="add_cart_btn" href="#">Add To Cart</a></li>
+                                <li><a class="add_cart_btn" onclick="addToCart('{{$products[7]->id}}','{{$products[7]->price}}')"
+       href="javascript:void(0);">Add To Cart</a></li>
                                 <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
                             </ul>
                             <h4>{{ $products[7]->name }}</h4>

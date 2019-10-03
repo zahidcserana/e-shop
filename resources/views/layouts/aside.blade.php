@@ -1,4 +1,4 @@
-<div id="m_ver_menu" class="m-aside-menu  m-aside-menu--skin-dark m-aside-menu--submenu-skin-dark m-aside-menu--dropdown " 
+<div id="m_ver_menu" class="m-aside-menu  m-aside-menu--skin-dark m-aside-menu--submenu-skin-dark m-aside-menu--dropdown "
 data-menu-vertical="true"data-menu-dropdown="true" data-menu-scrollable="true" data-menu-dropdown-timeout="500">
     <ul class="m-menu__nav  m-menu__nav--dropdown-submenu-arrow ">
         <li class="m-menu__item  m-menu__item--active" aria-haspopup="true" >
@@ -50,6 +50,7 @@ data-menu-vertical="true"data-menu-dropdown="true" data-menu-scrollable="true" d
                             </span>
                         </a>
                     </li>
+                    <!--
                     <li class="m-menu__item " aria-haspopup="true"  data-redirect="true">
                         <a  href="builder.html" class="m-menu__link ">
                             <i class="m-menu__link-bullet m-menu__link-bullet--dot">
@@ -70,9 +71,12 @@ data-menu-vertical="true"data-menu-dropdown="true" data-menu-scrollable="true" d
                             </span>
                         </a>
                     </li>
+                  -->
+
                 </ul>
             </div>
         </li>
+        <!--
         <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  data-menu-submenu-toggle="hover">
             <a  href="#" class="m-menu__link m-menu__toggle">
                 <span class="m-menu__item-here"></span>
@@ -418,7 +422,8 @@ data-menu-vertical="true"data-menu-dropdown="true" data-menu-scrollable="true" d
                     </li>
                 </ul>
             </div>
-        </li>
+        </li> -->
+
         <li class="m-menu__item  m-menu__item--submenu m-menu__item--bottom-2" aria-haspopup="true"  data-menu-submenu-toggle="hover">
             <a  href="#" class="m-menu__link m-menu__toggle">
                 <i class="m-menu__link-icon flaticon-settings"></i>
@@ -555,7 +560,8 @@ data-menu-vertical="true"data-menu-dropdown="true" data-menu-scrollable="true" d
                 </ul>
             </div>
         </li>
-        <li class="m-menu__item  m-menu__item--submenu m-menu__item--bottom-1" aria-haspopup="true"  data-menu-submenu-toggle="hover">
+
+        <!-- <li class="m-menu__item  m-menu__item--submenu m-menu__item--bottom-1" aria-haspopup="true"  data-menu-submenu-toggle="hover">
             <a  href="#" class="m-menu__link m-menu__toggle">
                 <i class="m-menu__link-icon flaticon-info"></i>
                 <span class="m-menu__link-text">
@@ -625,6 +631,6 @@ data-menu-vertical="true"data-menu-dropdown="true" data-menu-scrollable="true" d
                     </li>
                 </ul>
             </div>
-        </li>
+        </li> -->
     </ul>
 </div>

@@ -14,7 +14,9 @@
                     success: function (response) {
                         var data = JSON.parse(response);
                         if (data.success) {
-                            $("#price_" + itemId).text(data.data.price);
+                            $("#price_" + itemId).text(data.data.sub_total);
+                            $("#cart-sub-total").text(data.cart.sub_total);
+                            $("#cart-total-payble").text(data.cart.total_payble);
                         }
                     }
                 });
@@ -33,7 +35,9 @@
                     success: function (response) {
                         var data = JSON.parse(response);
                         if (data.success) {
-                            $("#price_" + itemId).text(data.data.price);
+                            $("#price_" + itemId).text(data.data.sub_total);
+                            $("#cart-sub-total").text(data.cart.sub_total);
+                            $("#cart-total-payble").text(data.cart.total_payble);
                         }
                     }
                 });
@@ -125,7 +129,7 @@
                                     <h5>Subtotal</h5>
                                 </div>
                                 <div class="media-body">
-                                    <h6>{{ $cart->sub_total }}</h6>
+                                    <h6 id="cart-sub-total">{{ $cart->sub_total }}</h6>
                                 </div>
                             </div>
                             {{--  <div class="media">
@@ -155,7 +159,7 @@
                                 Total
                             </div>
                             <div class="float-right">
-                                {{$cart->total_payble}}
+                                <span id="cart-total-payble">{{$cart->total_payble}}</span>
                             </div>
                         </div>
                     </div>

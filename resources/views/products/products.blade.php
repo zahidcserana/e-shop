@@ -77,7 +77,7 @@
                     </li>
                 </ul>
             </div>
-            <div>
+            <!-- <div>
                 <div class="m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push"
                      data-dropdown-toggle="hover" aria-expanded="true">
                     <a href="#"
@@ -141,7 +141,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
     <!-- END: Subheader -->

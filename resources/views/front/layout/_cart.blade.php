@@ -13,7 +13,7 @@ $categories = DB::table('categories')->get();
 
     <link rel="icon" href="{{asset('front/img/fav-icon.png')}}" type="image/x-icon"/>
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>DREAM FASHION</title>
+    <title>{{ env('TITLE') }}</title>
 
     <!-- Icon css link -->
     <link href="{{asset('front/css/font-awesome.min.css')}}" rel="stylesheet">

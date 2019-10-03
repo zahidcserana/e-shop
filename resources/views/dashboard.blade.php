@@ -40,14 +40,14 @@
                                         </small>
                                     </div>
                                     <div class="m-widget26__chart" style="height:90px; width: 220px;">
-                                        
+
                                     </div>
                                 </div>
                             </a>
                         </div>
                     </div>
                     <div class="m--space-30"></div>
-                    
+
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-2">
                     <div class="m-portlet m-portlet--half-height m-portlet--border-bottom-success ">
@@ -68,6 +68,7 @@
                     </div>
                     <div class="m--space-30"></div>
                 </div>
+                <!--
                 <div class="col-sm-12 col-md-12 col-lg-2">
                     <div class="m-portlet m-portlet--half-height m-portlet--border-bottom-danger ">
                         <div class="m-portlet__body">
@@ -126,12 +127,12 @@
                         </div>
                     </div>
                     <div class="m--space-30"></div>
-                </div>
+                </div> -->
 
             </div>
             <!--end:: Widgets/Quick Stats-->
         </div>
-       
+
     </div>
     <!--End::Section-->
 </div>
