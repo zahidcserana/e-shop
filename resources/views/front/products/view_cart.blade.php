@@ -2,6 +2,19 @@
 @section('header_js')
     @parent
     <script>
+        jQuery(".removeItem").click(function() {
+          var itemId = $(this).attr("id");
+          $.ajax({
+              url: "/remove-cart-item/"+itemId,
+              type: 'GET',
+              success: function (response) {
+                  var data = JSON.parse(response);
+                  if (data.success) {
+                      window.location.reload();
+                  }
+              }
+          });
+        });
         function increase(itemId) {
             var result = document.getElementById('sst_' + itemId);
             var sst = result.value;
@@ -60,7 +73,7 @@
                                 @foreach($items as $item)
                                     <tr>
                                         <th scope="row">
-                                            <img src="img/icon/close-icon.png" alt="">
+                                            <img class="removeItem" id="{{ $item->id }}" src="img/icon/close-icon.png" alt="">
                                         </th>
                                         <td>
                                             <div class="media">

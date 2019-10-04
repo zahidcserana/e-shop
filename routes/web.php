@@ -15,6 +15,7 @@ Route::get('/view-product/{id}', 'Front\ProductsController@viewProduct')->name('
 Route::post('/add-to-cart', 'Front\CartsController@addToCart')->name('add_to_cart');
 Route::post('/update-cart', 'Front\CartsController@updateCart')->name('update_cart');
 Route::get('/view-cart', 'Front\CartsController@viewCart')->name('view_cart');
+Route::get('/remove-cart-item/{itemId}', 'Front\CartsController@removeCartItem')->name('remove_cart_item');
 
 /** Order */
 Route::get('/checkout/{cart?}', 'Front\OrderController@checkout')->name('checkout');

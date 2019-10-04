@@ -54,6 +54,15 @@ class CartsController extends Controller
 
         echo json_encode(array('success' => true, 'data' => $item, 'cart' => DB::table('carts')->where('id', $cartItem->cart_id)->first()));
     }
+    public function removeCartItem($itemId)
+    {
+        $cartItem = DB::table('cart_items')->where('id', $itemId)->first();
+        $cartId = $cartItem->cart_id;
+        DB::table('cart_items')->where('id', $itemId)->delete();
+        $this->_updateCart($cartId);
+
+        echo json_encode(array('success' => true, 'cart' => DB::table('carts')->where('id', $cartItem->cart_id)->first()));
+    }
 
     private function _updateCart($cartId)
     {

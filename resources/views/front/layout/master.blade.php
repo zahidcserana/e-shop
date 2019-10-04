@@ -36,6 +36,8 @@ $cartItemNumber = Session::get('cart_id') ? DB::table('cart_items')->where('cart
     <link href="{{asset('front/css/style.css')}}" rel="stylesheet">
     <link href="{{asset('front/css/responsive.css')}}" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -59,7 +61,7 @@ $cartItemNumber = Session::get('cart_id') ? DB::table('cart_items')->where('cart
             line-height: 20px;
         }
     </style>
-     @yield('header_js')
+
 </head>
 <body>
 
@@ -248,8 +250,10 @@ $cartItemNumber = Session::get('cart_id') ? DB::table('cart_items')->where('cart
 <script src="{{asset('front/vendors/magnify-popup/jquery.magnific-popup.min.js')}}"></script>
 <script src="{{asset('front/vendors/vertical-slider/js/jQuery.verticalCarousel.js')}}"></script>
 <script src="{{asset('front/vendors/jquery-ui/jquery-ui.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js"></script>
 
 <script src="{{asset('front/js/theme.js')}}"></script>
+<script src="{{asset('front/js/custom.js')}}"></script>
 <script>
     $(document).ready(function () {
         $(document.body).delegate('#category_id', 'change', function () {
@@ -263,5 +267,6 @@ $cartItemNumber = Session::get('cart_id') ? DB::table('cart_items')->where('cart
         });
     });
 </script>
+@yield('header_js')
 </body>
 </html>

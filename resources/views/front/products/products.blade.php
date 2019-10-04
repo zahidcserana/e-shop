@@ -10,36 +10,29 @@
                 success: function (response) {
                     var response = $.parseJSON(response);
                     if (response.success) {
-                        $("#cart-msg").show();
+                        swal({
+                            title: "Successfully added"
+                        });
                     }
                 }
             });
         }
     </script>
-    <style>
-        #cart-msg {
-            margin-bottom: 5px;
-            width: 30%;
-            text-align: center;
-            font-size: 18px;
-            display: none;
-        }
-    </style>
 @endsection
 @section('front_content')
 <!--================Categories Banner Area =================-->
     <section class="categories_banner_area">
-            <div class="container">
-                <div class="c_banner_inner">
-                    <h3>shop grid with left sidebar</h3>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Shop</a></li>
-                        <li class="current"><a href="#">Shop Grid with Left Sidebar</a></li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+          <div class="container">
+              <div class="c_banner_inner">
+                  <h3>shop grid with left sidebar</h3>
+                  <ul>
+                      <li><a href="#">Home</a></li>
+                      <li><a href="#">Shop</a></li>
+                      <li class="current"><a href="#">Shop Grid with Left Sidebar</a></li>
+                  </ul>
+              </div>
+          </div>
+      </section>
         <!--================End Categories Banner Area =================-->
 
     <!--================Categories Product Area =================-->
@@ -49,7 +42,6 @@
                 <div class="row row_disable">
                     <div class="col-lg-12 float-md-right">
                         <div class="showing_fillter">
-                            <div class="alert-success" id="cart-msg">Successfully added</div>
                             <div class="row m0">
                                 <div class="first_fillter">
                                     <h4>Showing {{$from}} to {{$to}} of {{$total}} total</h4>
