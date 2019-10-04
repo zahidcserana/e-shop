@@ -76,9 +76,8 @@
                                                     <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a>
                                                     </li>
                                                 </ul>
-                                                <h4>{{$product->name}}</h4>
-                                                <h5>
-                                                    <del>{{$product->price + 10}}</del> {{$product->price}}</h5>
+                                                <h4> {{ $product->name }} </h4>
+                                                <h5> {{ $product->price }} </h5>
                                             </div>
                                         </div>
                                     </div>
@@ -97,4 +96,3 @@
     </section>
 
 @endsection
-

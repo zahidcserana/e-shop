@@ -10,7 +10,7 @@
                 <ul class="navbar-nav categories">
                     <li class="nav-item">
                         <select class="selectpicker" id="category_id" name="category_id">
-                            <option value="">Category</option>
+                            <option value="">-Category-</option>
                             @foreach($categories as $row)
                                 <option value="{{$row->id}}">{{$row->name}}</option>
                             @endforeach
@@ -29,8 +29,8 @@
                             @endforeach
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="javascript::void()">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="javascript::void()">Contact</a></li>
                 </ul>
             </div>
         </nav>

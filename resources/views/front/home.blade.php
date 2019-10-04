@@ -1,6 +1,8 @@
 @extends('front.layout.master')
 @section('header_js')
     @parent
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js"></script>
     <script>
         function addToCart(id,price) {
             $.ajax({
@@ -10,21 +12,14 @@
                 success: function (response) {
                     var response = $.parseJSON(response);
                     if (response.success) {
-                        $("#cart-msg").show();
+                      swal({
+                          title: "Successfully added"
+                      });
                     }
                 }
             });
         }
     </script>
-    <style>
-        #cart-msg {
-            margin-bottom: 5px;
-            width: 30%;
-            text-align: center;
-            font-size: 18px;
-            display: none;
-        }
-    </style>
 @endsection
 @section('front_content')
 
@@ -154,7 +149,6 @@
     <section class="feature_add_area">
         <div class="container">
             <div class="row feature_inner">
-              <div class="alert-success" id="cart-msg">Successfully added</div>
                 <div class="col-lg-4">
                     <div class="f_add_item">
                         <div class="f_add_img"><img class="img-fluid" src="{{asset('front/img/feature-add/f-add-8.jpg')}}" alt=""></div>
@@ -212,8 +206,8 @@
                                        href="javascript:void(0);">Add To Cart</a></li>
                                 <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
                             </ul>
-                            <h4>{{ $products[0]->name }}</h4>
-                            <h5><del>{{ $products[0]->price + 10}}</del>  {{ $products[0]->price }}</h5>
+                            <h4> {{ $products[0]->name }} </h4>
+                            <h5>  {{ $products[0]->price }} </h5>
                         </div>
                     </div>
                     <div class="l_product_item">
@@ -229,8 +223,8 @@
                                        href="javascript:void(0);">Add To Cart</a></li>
                                 <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
                             </ul>
-                            <h4>{{ $products[1]->name }}</h4>
-                            <h5><del>{{ $products[1]->price + 10}}</del>  {{ $products[1]->price }}</h5>
+                            <h4> {{ $products[1]->name }} </h4>
+                            <h5>  {{ $products[1]->price }} </h5>
                         </div>
                     </div>
                 </div>
@@ -251,7 +245,7 @@
                                 <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
                             </ul>
                             <h4>{{ $products[2]->name }}</h4>
-                            <h5><del>{{ $products[2]->price + 10}}</del>  {{ $products[2]->price }}</h5>
+                            <h5> {{ $products[2]->price }}</h5>
                         </div>
                     </div>
                     <div class="l_product_item">
@@ -268,7 +262,7 @@
                                 <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
                             </ul>
                             <h4>{{ $products[3]->name }}</h4>
-                            <h5><del>{{ $products[3]->price + 10}}</del>  {{ $products[3]->price }}</h5>
+                            <h5>  {{ $products[3]->price }}</h5>
                         </div>
                     </div>
                 </div>
@@ -288,8 +282,8 @@
        href="javascript:void(0);">Add To Cart</a></li>
                                 <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
                             </ul>
-                            <h4>{{ $products[4]->name }}</h4>
-                            <h5><del>{{ $products[4]->price + 10}}</del>  {{ $products[4]->price }}</h5>
+                            <h4> {{ $products[4]->name }} </h4>
+                            <h5> {{ $products[4]->price }} </h5>
                         </div>
                     </div>
                     <div class="l_product_item">
@@ -305,8 +299,8 @@
        href="javascript:void(0);">Add To Cart</a></li>
                                 <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
                             </ul>
-                            <h4>{{ $products[5]->name }}</h4>
-                            <h5><del>{{ $products[5]->price + 10}}</del>  {{ $products[5]->price }}</h5>
+                            <h4> {{ $products[5]->name }} </h4>
+                            <h5>  {{ $products[5]->price }} </h5>
                         </div>
                     </div>
                 </div>
@@ -326,8 +320,8 @@
        href="javascript:void(0);">Add To Cart</a></li>
                                 <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
                             </ul>
-                            <h4>{{ $products[6]->name }}</h4>
-                            <h5><del>{{ $products[6]->price + 10}}</del>  {{ $products[6]->price }}</h5>
+                            <h4> {{ $products[6]->name }} </h4>
+                            <h5>  {{ $products[6]->price }} </h5>
                         </div>
                     </div>
                     <div class="l_product_item">
@@ -343,8 +337,8 @@
        href="javascript:void(0);">Add To Cart</a></li>
                                 <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
                             </ul>
-                            <h4>{{ $products[7]->name }}</h4>
-                            <h5><del>{{ $products[7]->price + 10}}</del>  {{ $products[7]->price }}</h5>
+                            <h4> {{ $products[7]->name }} </h4>
+                            <h5>  {{ $products[7]->price }} </h5>
                         </div>
                     </div>
                 </div>
@@ -529,7 +523,7 @@
                                             </div>
                                             <div class="f_p_text">
                                                 <a href="{{route('view_product',$item->id)}}">
-                                                    <h5>{{ $item->name }}</h5>
+                                                    <h5> {{ $item->name }} </h5>
                                                 </a>
                                                 <h4>{{ $item->price }}</h4>
                                             </div>

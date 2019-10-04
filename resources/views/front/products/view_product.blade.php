@@ -1,6 +1,29 @@
-
 @extends('front.layout.master')
+@section('header_js')
+    @parent
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js"></script>
+    <script>
 
+      function addToCart(id,price) {
+            $.ajax({
+                url: "{{ route('add_to_cart') }}",
+                type: 'POST',
+                data: {_token: "{{ csrf_token() }}", product_id: id,price:price},
+                success: function (response) {
+                    var response = $.parseJSON(response);
+                    if (response.success) {
+                        swal({
+                            title: "Successfully added"
+                        });
+                    }
+                }
+            });
+        }
+
+
+    </script>
+@endsection
 @section('front_content')
 
     <!--================Product Details Area =================-->
@@ -192,7 +215,7 @@
                                 <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
                                         class="increase items-count" type="button"><i class="icon_plus"></i></button>
                             </div>
-                            <a class="add_cart_btn" href="#">add to cart</a>
+                            <a class="add_cart_btn" onclick="addToCart('{{$product->id}}','{{$product->price}}')" href="javascript:void(0);">Add To Cart</a>
                         </div>
                         <div class="shareing_icon">
                             <h5>share :</h5>
@@ -215,6 +238,7 @@
     <section class="product_description_area">
         <div class="container">
             <nav class="tab_menu">
+
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                     <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
                        aria-controls="nav-home" aria-selected="true">Product Description</a>
