@@ -24,17 +24,19 @@ class CartsController extends Controller
             $cartId = DB::table('carts')->insertGetid($cartInput);
             $request->session()->put('cart_id', $cartId);
         }
+        $product = DB::table('products')->where('id', $data['product_id'])->first();
+        $quantity = $data['quantity'] ?? 1;
         $input = array(
             'cart_id' => $cartId,
             'product_id' => $data['product_id'],
-            'unit_price' => $data['price'],
-            'sub_total' => $data['price'] * 1,
-            'quantity' => empty($data['quantity']) == true ? 1 : $data['quantity'],
+            'unit_price' => $product->price,
+            'sub_total' => $product->price * $quantity,
+            'total_payble' => $product->price * $quantity,
+            'quantity' => $quantity,
         );
 
         DB::table('cart_items')->insert($input);
         $this->_updateCart($cartId);
-
         echo json_encode(array('success' => true));
     }
 

@@ -2,7 +2,7 @@
 @section('include_js')
     @parent
     <script src="{{ asset('js/jquery.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/data-product.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/data-order.js') }}" type="text/javascript"></script>
     <style>
         .dropbtn {
             background-color: #4CAF50;
@@ -47,7 +47,7 @@
         <div class="d-flex align-items-center">
             <div class="mr-auto">
                 <h3 class="m-subheader__title m-subheader__title--separator">
-                    Product List
+                    Order List
                 </h3>
                 <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
                     <li class="m-nav__item m-nav__item--home">
@@ -59,9 +59,9 @@
                         -
                     </li>
                     <li class="m-nav__item">
-                        <a href="{{route('products')}}" class="m-nav__link">
+                        <a href="{{route('orders')}}" class="m-nav__link">
 											<span class="m-nav__link-text">
-												Products
+												Orders
 											</span>
                         </a>
                     </li>
@@ -76,6 +76,7 @@
                         </a>
                     </li>
                 </ul>
+
             </div>
             <!-- <div>
                 <div class="m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push"
@@ -154,12 +155,13 @@
                         <div class="m-portlet__head-caption">
                             <div style="float: left" class="m-portlet__head-title">
                                 <h3 class="m-portlet__head-text">
-                                    Product List
+                                    Order List
                                     @if(Session::has('status'))
                                         <span style="color: green">{{Session::get('status')}}</span>
                                     @endif
                                 </h3>
                             </div>
+
                             <div style="float: right;padding-top: 1%;">
                                 <a class="btn btn-primary" href="{{route('add-product')}}">Add New</a>
                             </div>
@@ -172,68 +174,6 @@
                                 <!--begin: Datatable -->
                                 <div class="m_datatable" id="ajax_data"></div>
                                 <!--end: Datatable -->
-                               {{-- <table class="table m_datatable m-datatable__table">
-                                    <thead class="m-datatable__head">
-                                    <tr>
-                                        <th>
-                                            #
-                                        </th>
-                                        <th>
-                                            Name
-                                        </th>
-                                        <th>
-                                            Category
-                                        </th>
-                                        <th>
-                                            Status
-                                        </th>
-                                        <th>
-                                            Created
-                                        </th>
-                                        <th>
-                                            Action
-                                        </th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach($products as $row)
-                                        <tr class="m-datatable__row">
-                                            <th scope="row">
-                                                {{$row->id}}
-                                            </th>
-                                            <td>
-                                                <a class="dropdown-item"
-                                                   href="{{url('/add-product',$row->id)}}">{{$row->name}}</a>
-                                            </td>
-                                            <td>
-                                                {{empty($row->category_id)==true?'':Product::find($row->id)->category->name}}
-                                            </td>
-                                            <td>
-                                                {{$row->status==1?'Active':'Inactive'}}
-                                            </td>
-                                            <td>
-                                                {{$row->created_at}}
-                                            </td>
-                                            <td>
-                                                <div class="btn-group">
-                                                    <button type="button" class="btn btn-brand dropdown-toggle"
-                                                            data-toggle="dropdown" aria-haspopup="true"
-                                                            aria-expanded="true">
-                                                        Action
-                                                    </button>
-                                                    <div class="dropdown-menu" x-placement="bottom-start"
-                                                         style="position: absolute; transform: translate3d(0px, 36px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                                        <a class="dropdown-item"
-                                                           href="{{url('/add-product',$row->id)}}">Edit</a>
-                                                        <a class="dropdown-item"
-                                                           href="{{url('/product-delete',$row->id)}}">Delete</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                    </tbody>
-                                </table>--}}
                             </div>
                         </div>
                         <!--end::Section-->

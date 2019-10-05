@@ -76,7 +76,7 @@ data-menu-vertical="true"data-menu-dropdown="true" data-menu-scrollable="true" d
                 </ul>
             </div>
         </li>
-        <!--
+
         <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  data-menu-submenu-toggle="hover">
             <a  href="#" class="m-menu__link m-menu__toggle">
                 <span class="m-menu__item-here"></span>
@@ -84,12 +84,7 @@ data-menu-vertical="true"data-menu-dropdown="true" data-menu-scrollable="true" d
                 <span class="m-menu__link-title">
                     <span class="m-menu__link-wrap">
                         <span class="m-menu__link-text">
-                            Reports
-                        </span>
-                        <span class="m-menu__link-badge">
-                            <span class="m-badge m-badge--danger">
-                                2
-                            </span>
+                            Orders
                         </span>
                     </span>
                 </span>
@@ -98,7 +93,7 @@ data-menu-vertical="true"data-menu-dropdown="true" data-menu-scrollable="true" d
             <div class="m-menu__submenu ">
                 <span class="m-menu__arrow"></span>
                 <ul class="m-menu__subnav">
-                    <li class="m-menu__item  m-menu__item--parent" aria-haspopup="true" >
+                    <!-- <li class="m-menu__item  m-menu__item--parent" aria-haspopup="true" >
                         <span class="m-menu__link">
                             <span class="m-menu__item-here"></span>
                             <span class="m-menu__link-title">
@@ -114,16 +109,16 @@ data-menu-vertical="true"data-menu-dropdown="true" data-menu-scrollable="true" d
                                 </span>
                             </span>
                         </span>
-                    </li>
+                    </li> -->
                     <li class="m-menu__item " aria-haspopup="true" >
-                        <a  href="inner.html" class="m-menu__link ">
+                        <a  href="{{ route('orders') }}" class="m-menu__link ">
                             <i class="m-menu__link-icon flaticon-pie-chart"></i>
                             <span class="m-menu__link-text">
-                                Finance Reports
+                                Order List
                             </span>
                         </a>
                     </li>
-                    <li class="m-menu__item " aria-haspopup="true"  data-redirect="true">
+                    <!-- <li class="m-menu__item " aria-haspopup="true"  data-redirect="true">
                         <a  href="inner.html" class="m-menu__link ">
                             <i class="m-menu__link-icon flaticon-line-graph"></i>
                             <span class="m-menu__link-text">
@@ -146,10 +141,11 @@ data-menu-vertical="true"data-menu-dropdown="true" data-menu-scrollable="true" d
                                 Sales
                             </span>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </li>
+        <!--
         <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  data-menu-submenu-toggle="hover" data-redirect="true">
             <a  href="#" class="m-menu__link m-menu__toggle">
                 <span class="m-menu__item-here"></span>

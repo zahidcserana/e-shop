@@ -30,6 +30,7 @@ $routeName = Route::getCurrentRoute()->getName();
 		<!--end::Page Vendors -->
         <link href="{{ asset('assets/vendors/base/vendors.bundle.css') }}" rel="stylesheet">
         <link href="{{ asset('assets/demo/demo3/base/style.bundle.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 		<!--end::Base Styles -->
         <link rel="shortcut icon" href="{{ asset('assets/demo/demo3/media/img/logo/favicon.ico') }}" />
 		@yield('include_js')
@@ -981,10 +982,10 @@ $routeName = Route::getCurrentRoute()->getName();
 															</div>
 															<div class="m-card-user__details">
 																<span class="m-card-user__name m--font-weight-500">
-																	Lisa Strong
+																	{{ Auth::user()->name }}
 																</span>
 																<a href="" class="m-card-user__email m--font-weight-300 m-link">
-																	lisa.strong@gmail.com
+																	{{ Auth::user()->email }}
 																</a>
 															</div>
 														</div>
@@ -997,6 +998,7 @@ $routeName = Route::getCurrentRoute()->getName();
 																		Section
 																	</span>
 																</li>
+																<!--
 																<li class="m-nav__item">
 																	<a href="profile.html" class="m-nav__link">
 																		<i class="m-nav__link-icon flaticon-profile-1"></i>
@@ -1048,6 +1050,7 @@ $routeName = Route::getCurrentRoute()->getName();
 																	</a>
 																</li>
 																<li class="m-nav__separator m-nav__separator--fit"></li>
+																 -->
 																<li class="m-nav__item">
 																	{{--<a href="snippets/pages/user/login-1.html" class="btn m-btn--pill    btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder">--}}
 																		{{--Logout--}}
@@ -1071,13 +1074,7 @@ $routeName = Route::getCurrentRoute()->getName();
 												</div>
 											</div>
 										</li>
-										<li id="m_quick_sidebar_toggle" class="m-nav__item">
-											<a href="#" class="m-nav__link m-dropdown__toggle">
-												<span class="m-nav__link-icon">
-													<i class="flaticon-menu-button"></i>
-												</span>
-											</a>
-										</li>
+										@yield('sidebar_toggol')
 									</ul>
 								</div>
 							</div>

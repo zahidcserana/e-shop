@@ -190,6 +190,9 @@
     </script>
 @endsection
 <?php if (!empty($product)) { ?>
+@section('sidebar_toggol')
+  @include('layouts.sidebar_toggol')
+@endsection
 @section('side_bar')
     @include('products.side_bar')
 @endsection

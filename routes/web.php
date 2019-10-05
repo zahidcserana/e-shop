@@ -47,6 +47,13 @@ Route::get('/product-delete/{id}', 'ProductsController@delete')->name('product-d
 Route::post('/product_image', 'ImagesController@add')->name('product_image');
 Route::get('/image-feature', 'ImagesController@imageFeature')->name('image_feature');
 
+/** Order */
+Route::get('/order-all', 'OrderController@index')->name('orders');
+Route::get('/order-list', 'OrderController@orderList')->name('order-list');
+Route::get('/orders/{order?}/details', 'OrderController@details')->name('order_details');
+Route::post('/orders/{id}', 'OrderController@edit')->name('order_edit');
+Route::get('/orders/{id}/delete', 'OrderController@delete')->name('order_delete');
+
 
 // Size
 Route::get('/size/{id?}', 'SizesController@index')->name('size');
