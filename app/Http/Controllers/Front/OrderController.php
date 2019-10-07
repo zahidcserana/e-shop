@@ -79,21 +79,21 @@ class OrderController extends Controller
         return redirect()->route('view_order', ['id' => $orderId]);
     }
 
-    public function customerInfo($data)
-    {
-        $customer = DB::table('customers')->where('mobile', $data['mobile'])->first();
-        if (!empty($customer))
-            return $customer->id;
-        $customerInput = array(
-            'name' => $data['name'],
-            'mobile' => $data['mobile'],
-            'email' => $data['email'],
-            'address' => $data['address'],
-            'created_at' => date('Y-m-d H:i:s'),
-        );
-        $customerId = DB::table('customers')->insertGetid($customerInput);
-        return $customerId;
-    }
+    // public function customerInfo($data)
+    // {
+    //     $customer = DB::table('customers')->where('mobile', $data['mobile'])->first();
+    //     if (!empty($customer))
+    //         return $customer->id;
+    //     $customerInput = array(
+    //         'name' => $data['name'],
+    //         'mobile' => $data['mobile'],
+    //         'email' => $data['email'],
+    //         'address' => $data['address'],
+    //         'created_at' => date('Y-m-d H:i:s'),
+    //     );
+    //     $customerId = DB::table('customers')->insertGetid($customerInput);
+    //     return $customerId;
+    // }
 
     public function view($orderId)
     {

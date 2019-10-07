@@ -6,6 +6,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use DB;
 
 class Controller extends BaseController
 {
@@ -22,5 +23,22 @@ class Controller extends BaseController
         //Convert whitespaces and underscore to dash
         $string = preg_replace("/[\s_]/", "-", $string);
         return trim($string);
+    }
+
+    public function customerInfo($data)
+    {
+        $customer = DB::table('customers')->where('mobile', $data['mobile'])->first();
+        if (!empty($customer))
+            return $customer->id;
+
+        $customerInput = array(
+            'name' => $data['name'],
+            'mobile' => $data['mobile'],
+            'email' => $data['email'] ?? '',
+            'address' => $data['address'] ?? '',
+            'created_at' => date('Y-m-d H:i:s'),
+        );
+        $customerId = DB::table('customers')->insertGetid($customerInput);
+        return $customerId;
     }
 }

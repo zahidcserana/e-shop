@@ -145,7 +145,7 @@ data-menu-vertical="true"data-menu-dropdown="true" data-menu-scrollable="true" d
                 </ul>
             </div>
         </li>
-        <!--
+
         <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  data-menu-submenu-toggle="hover" data-redirect="true">
             <a  href="#" class="m-menu__link m-menu__toggle">
                 <span class="m-menu__item-here"></span>
@@ -167,15 +167,16 @@ data-menu-vertical="true"data-menu-dropdown="true" data-menu-scrollable="true" d
                         </span>
                     </li>
                     <li class="m-menu__item " aria-haspopup="true"  data-redirect="true">
-                        <a  href="inner.html" class="m-menu__link ">
+                        <a  href="{{ route('order_request_new') }}" class="m-menu__link ">
                             <i class="m-menu__link-bullet m-menu__link-bullet--dot">
                                 <span></span>
                             </i>
                             <span class="m-menu__link-text">
-                                Reports
+                                New Order Request
                             </span>
                         </a>
                     </li>
+                  <!--
                     <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  data-menu-submenu-toggle="hover" data-redirect="true">
                         <a  href="#" class="m-menu__link m-menu__toggle">
                             <i class="m-menu__link-bullet m-menu__link-bullet--dot">
@@ -260,17 +261,18 @@ data-menu-vertical="true"data-menu-dropdown="true" data-menu-scrollable="true" d
                             </ul>
                         </div>
                     </li>
-                    <li class="m-menu__item " aria-haspopup="true"  data-redirect="true">
-                        <a  href="inner.html" class="m-menu__link ">
+                  -->
+                  <li class="m-menu__item " aria-haspopup="true"  data-redirect="true">
+                        <a  href="{{ route('order_requests') }}" class="m-menu__link ">
                             <i class="m-menu__link-bullet m-menu__link-bullet--dot">
                                 <span></span>
                             </i>
                             <span class="m-menu__link-text">
-                                Clients
+                                Order Request List
                             </span>
                         </a>
                     </li>
-                    <li class="m-menu__item " aria-haspopup="true"  data-redirect="true">
+                <!--    <li class="m-menu__item " aria-haspopup="true"  data-redirect="true">
                         <a  href="inner.html" class="m-menu__link ">
                             <i class="m-menu__link-bullet m-menu__link-bullet--dot">
                                 <span></span>
@@ -280,9 +282,13 @@ data-menu-vertical="true"data-menu-dropdown="true" data-menu-scrollable="true" d
                             </span>
                         </a>
                     </li>
+                  -->
+
                 </ul>
             </div>
         </li>
+
+        <!--
         <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  data-menu-submenu-toggle="hover" data-redirect="true">
             <a  href="#" class="m-menu__link m-menu__toggle">
                 <span class="m-menu__item-here"></span>
