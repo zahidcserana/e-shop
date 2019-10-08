@@ -8,6 +8,7 @@ use App\Model\Product;
 use App\Model\Image;
 use DB;
 use Validator;
+use Session;
 
 class OrderRequestController extends Controller
 {
@@ -32,8 +33,8 @@ class OrderRequestController extends Controller
                  Action <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
-                  <li><a href="/request_orders/' . $orderId . '/details">Edit</a></li>
-                  <li><a href="/request_orders/' . $orderId . '/delete">Delete</a></li>
+                  <li><a href="/order-requests/' . $orderId . '">View</a></li>
+                  <li><a href="/order-requests/' . $orderId . '/delete">Delete</a></li>
                 </ul>
               </div>
         ';
@@ -70,7 +71,7 @@ class OrderRequestController extends Controller
         'description' => strip_tags($data['description']),
         'category_id' => $data['category_id'],
         'sub_category_id' => $data['sub_category_id'],
-        'required_date' => $data['required_date'] ? date('Y-m-d', strtotime($data['required_date'])) : '0000-00-00',
+        'required_date' => $data['required_date'] ?? '0000-00-00',
         'customer_id' => $this->customerInfo($data),
         'created_at' => date('Y-m-d H:i:s')
     );
@@ -79,4 +80,62 @@ class OrderRequestController extends Controller
     return redirect()->route('order_requests');
   }
   /** New Order Request End*/
+  /** Order details */
+  public function view($orderId)
+  {
+      $order = DB::table('request_orders')->where('id', $orderId)->first();
+      if (empty($order)) {
+          return redirect()->route('home_page');
+      }
+      $categories = DB::table('categories')->get();
+      $subCategories = DB::table('sub_categories')->where('category_id', $order->category_id)->get();
+
+      $data['categories'] = $categories;
+      $data['sub_categories'] = $subCategories;
+      $data['order'] = $order;
+      $data['customer'] = DB::table('customers')->where('id', $order->customer_id)->first();
+      // dd($order->description);
+      return view('orders.requests.view', $data);
+  }
+
+  public function update($id, Request $request)
+  {
+      $order = DB::table('request_orders')->where('id', $id)->first();
+      if (empty($order)) {
+          return redirect()->route('home_page');
+      }
+      $data = $request->except('_token');
+      $data['updated_at'] = date('Y-m-d H:i:s');
+      /** Order update */
+      $orderData = array('category_id', 'sub_category_id', 'description', 'required_date');
+      $orderInput = array();
+      foreach ($orderData as $key) {
+        if (array_key_exists($key, $data)) {
+          $orderInput[$key] = $data[$key];
+        }
+      }
+      if (!DB::table('request_orders')->where('id', $id)->update($orderInput)) {
+        return redirect()->back()->withErrors(['Something went wrong! Order info not updated.']);
+      }
+      /** Customer update */
+      $customerData = array('name', 'email', 'mobile', 'phone', 'address');
+      $customerInput = array();
+      foreach ($customerData as $key) {
+        if (array_key_exists($key, $data)) {
+          $customerInput[$key] = $data[$key];
+        }
+      }
+      if (!DB::table('customers')->where('id', $order->customer_id)->update($customerInput)) {
+        return redirect()->back()->withErrors(['Something went wrong! Customer info not updated.']);
+      }
+      Session::flash('message', "Successfully updated.");
+      return redirect()->back();
+  }
+
+  public function delete($id)
+  {
+      DB::table('request_orders')->where('id', $id)->delete();
+      Session::flash('status', "Successfully Deleted.");
+      return redirect()->back();
+  }
 }

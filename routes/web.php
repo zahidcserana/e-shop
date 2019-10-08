@@ -36,7 +36,10 @@ Route::group(['middleware' => ['auth']], function () {
   Route::get('/order-requests', 'OrderRequestController@index')->name('order_requests');
   Route::get('/order-requests/new', 'OrderRequestController@new')->name('order_request_new');
   Route::post('/order-requests/add', 'OrderRequestController@add')->name('order_request_add');
-  Route::get('/order-requests-list', 'OrderRequestController@orderList')->name('order_requests_list');
+  Route::get('/order-requests-list', 'OrderRequestController@orderList')->name('order_requests_list'); //ajax_data
+  Route::get('/order-requests/{id}', 'OrderRequestController@view')->name('order_request_view');
+  Route::post('/order-requests/{id}', 'OrderRequestController@update')->name('order_request_update');
+  Route::get('/order-requests/{id}/delete', 'OrderRequestController@delete')->name('order_request_delete');
 
   // Size
   Route::get('/size/{id?}', 'SizesController@index')->name('size');

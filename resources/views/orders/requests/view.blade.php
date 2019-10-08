@@ -1,7 +1,6 @@
 @extends('layouts.master')
 @section('include_js')
     @parent
-    
 @endsection
 @section('content')
     <!-- BEGIN: Subheader -->
@@ -39,6 +38,9 @@
                     </li>
                 </ul>
             </div>
+            <div style="float: right;padding-top: 1%;">
+                <a class="btn btn-primary" href="{{route('order_request_new')}}">New Request</a>
+            </div>
         </div>
     </div>
     <!-- END: Subheader -->
@@ -52,7 +54,10 @@
               </ul>
           </div>
       @endif
-      <form class="m-form" name="product-form" method="POST" action="{{route('order_request_add')}}">
+      @if (Session::has('message'))
+         <div class="alert alert-info">{{ Session::get('message') }}</div>
+      @endif
+      <form class="m-form" name="product-form" method="POST" action="{{route('order_request_update', $order->id)}}">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="row">
           <div class="col-lg-6">
@@ -81,7 +86,7 @@
                         <select class="form-control m-input m-input--air" id="category_id" name="category_id" onchange="getSubCategory(this.value)" value="{{ old('category_id') }}">
                             <option value="">Select Category</option>
                             @foreach($categories as $row)
-                                <option value="{{$row->id}}">{{$row->name}}</option>
+                                <option {{ $order->category_id == $row->id ? 'selected' : "" }} value="{{ $row->id }}"> {{ $row->name }} </option>
                             @endforeach
                         </select>
                         <span class="m-form__help">
@@ -93,11 +98,11 @@
                       <label class="col-lg-3 col-form-label" id="sub_cat_lebel">
                           Condition:
                       </label>
-                      <div id="sub_cat_list" class="col-lg-6" style="display: none;">
+                      <div id="sub_cat_list" class="col-lg-6">
                         <select class="form-control m-input m-input--air" id="sub_category_id" name="sub_category_id">
                             <option value="">Select One</option>
                             @foreach($sub_categories as $row)
-                                <option value="{{$row->id}}">{{$row->name}}</option>
+                                <option {{ $order->sub_category_id == $row->id ? 'selected' : "" }} value="{{$row->id}}">{{$row->name}}</option>
                             @endforeach
                         </select>
                         <span class="m-form__help">
@@ -110,7 +115,7 @@
                         Date of Requirement:
                       </label>
                       <div class="col-lg-6 ">
-                        <input type="text" name="required_date" class="form-control" id="m_datepicker_1" readonly="" placeholder="Select date">
+                        <input type="text" name="required_date" class="form-control" id="m_datepicker_1" readonly="" placeholder="Select date" value="{{ $order->required_date }}">
                         <span class="m-form__help">
                           Please select date of requirement
                         </span>
@@ -124,6 +129,7 @@
                         <textarea name="description" class="form-control md-input"
                                   data-provide="markdown" rows="10" style="resize: none;"
                                   aria-describedby="markdown-error" aria-invalid="false" value="{{ old('description') }}">
+                                  {{ $order->description }}
                         </textarea>
                       </div>
                     </div>
@@ -203,7 +209,7 @@
                         Full Name:
                       </label>
                       <div class="col-lg-6">
-                        <input type="text" name="name" class="form-control m-input" placeholder="Enter full name" value="{{ old('name') }}">
+                        <input type="text" name="name" class="form-control m-input" placeholder="Enter full name" value="{{ $customer->name }}">
                         <span class="m-form__help">
                           Please enter your full name
                         </span>
@@ -214,7 +220,7 @@
                         Email address:
                       </label>
                       <div class="col-lg-6">
-                        <input type="email" name="email" class="form-control m-input" placeholder="Email" value="{{ old('email') }}">
+                        <input type="email" name="email" class="form-control m-input" placeholder="Email" value="{{ $customer->email }}">
                         <span class="m-form__help">
                           Please enter your valid email
                         </span>
@@ -231,7 +237,7 @@
                               <i class="la la-phone"></i>
                             </span>
                           </div>
-                          <input type="text" name="mobile" class="form-control form-control-danger" placeholder="Mobile" value="{{ old('mobile') }}">
+                          <input type="text" name="mobile" class="form-control form-control-danger" placeholder="Mobile" value="{{ $customer->mobile }}">
                         </div>
                         <span class="m-form__help">
                           Please enter your mobile number
@@ -249,7 +255,7 @@
                               <i class="la la-phone"></i>
                             </span>
                           </div>
-                          <input type="text" name="phone" class="form-control form-control-danger" placeholder="Phone" value="{{ old('phone') }}">
+                          <input type="text" name="phone" class="form-control form-control-danger" placeholder="Phone" value="{{ $customer->phone }}">
                         </div>
                       </div>
                     </div>
@@ -258,7 +264,7 @@
                         Address:
                       </label>
                       <div class="col-lg-6">
-                        <input type="text" name="address" class="form-control m-input" placeholder="Address" value="{{ old('address') }}">
+                        <input type="text" name="address" class="form-control m-input" placeholder="Address" value="{{ $customer->address }}">
                         <span class="m-form__help">
                           Please enter your full address
                         </span>

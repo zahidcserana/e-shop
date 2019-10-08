@@ -69,9 +69,9 @@
                         -
                     </li>
                     <li class="m-nav__item">
-                        <a href="{{route('add-product')}}" class="m-nav__link">
+                        <a href="{{route('orders')}}" class="m-nav__link">
 											<span class="m-nav__link-text">
-												New
+												list
 											</span>
                         </a>
                     </li>
@@ -163,7 +163,7 @@
                             </div>
 
                             <div style="float: right;padding-top: 1%;">
-                                <a class="btn btn-primary" href="{{route('add-product')}}">Add New</a>
+                                <a class="btn btn-primary" href="{{route('orders')}}">Back</a>
                             </div>
                         </div>
                     </div>

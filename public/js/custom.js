@@ -17,3 +17,7 @@ function getSubCategory(id) {
         }
     });
 }
+
+$('#m_datepicker_1').datepicker({
+   format: 'yyyy-mm-dd'
+ });

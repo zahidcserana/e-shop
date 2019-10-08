@@ -36,7 +36,7 @@ class OrderController extends Controller
                  Action <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
-                  <li><a href="/orders/' . $orderId . '/details">Edit</a></li>
+                  <li><a href="/orders/' . $orderId . '/details">View</a></li>
                   <li><a href="/orders/' . $orderId . '/delete">Delete</a></li>
                 </ul>
               </div>
