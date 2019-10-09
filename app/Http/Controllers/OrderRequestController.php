@@ -57,6 +57,7 @@ class OrderRequestController extends Controller
 
   public function add(Request $request) {
     $data = $request->except('_token');
+    dd($data);
     $rules = [
         'description' => 'required',
         'mobile' => 'required',
@@ -76,6 +77,39 @@ class OrderRequestController extends Controller
         'created_at' => date('Y-m-d H:i:s')
     );
     DB::table('request_orders')->insert($input);
+
+    /** Upload image start */
+
+    if ($request->hasFile('file'))
+    {
+          $user = $request->auth;
+          $file      = $request->file('file');
+          $filename  = $file->getClientOriginalName();
+          $extension = $file->getClientOriginalExtension();
+          $picture   = $user->pharmacy_branch_id.date('YmdHis').'-'.$extension;
+
+          $dir = 'assets/prescription_image/'. $picture;
+          $file->move('assets/prescription_image', $picture);
+
+          $im = file_get_contents($dir);
+          $uploded_image_file_bytecode = base64_encode($im);
+
+          $cartModel = new Cart();
+          $checkFile = $cartModel->where('token', $request->token)->whereNotNull('file_name')->first();
+          // return response()->json(["message" => $checkFile]);
+
+          if($checkFile && file_exists('assets/prescription_image/'. $checkFile->file_name)){
+            unlink('assets/prescription_image/'. $checkFile->file_name);
+          }
+
+          $cartData = $cartModel->where('token', $request->token)->update(['file' => $uploded_image_file_bytecode, 'file_name' => $picture]);
+
+          return response()->json(['success'=>true, "file_name" => $picture]);
+    } else
+    {
+          return response()->json(["message" => "Select image first."]);
+    }
+    /** Upload image end */
 
     return redirect()->route('order_requests');
   }
@@ -137,5 +171,9 @@ class OrderRequestController extends Controller
       DB::table('request_orders')->where('id', $id)->delete();
       Session::flash('status', "Successfully Deleted.");
       return redirect()->back();
+  }
+
+  public function uploadimage(Request $request)
+  {
   }
 }

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('include_js')
     @parent
-    
+
 @endsection
 @section('content')
     <!-- BEGIN: Subheader -->
@@ -52,7 +52,7 @@
               </ul>
           </div>
       @endif
-      <form class="m-form" name="product-form" method="POST" action="{{route('order_request_add')}}">
+      <form class="m-form" name="product-form" method="POST" action="{{route('order_request_add')}}" enctype="multipart/form-data">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="row">
           <div class="col-lg-6">
@@ -70,7 +70,6 @@
                 </div>
               </div>
               <!--begin::Form-->
-              <form class="m-form">
                 <div class="m-portlet__body">
                   <div class="m-form__section m-form__section--first">
                     <div class="form-group m-form__group row">
@@ -141,17 +140,7 @@
                                     <i class="flaticon-multimedia-2"></i>
                                   </span>
                                 </div>
-                                <input type="file" name="image" class="form-control form-control-danger" placeholder="Phone">
-                              </div>
-                            </div>
-                            <div class="col-lg-5">
-                              <div class="input-group">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text">
-                                    <i class="la la-envelope"></i>
-                                  </span>
-                                </div>
-                                <input type="text" class="form-control form-control-danger" placeholder="Email">
+                                <input type="file" name="file[]" id="file" class="form-control form-control-danger">
                               </div>
                             </div>
                             <div class="col-lg-2">
