@@ -61,6 +61,8 @@ class OrderRequestController extends Controller
     $rules = [
         'description' => 'required',
         'mobile' => 'required',
+//        'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
     ];
     $validator = Validator::make($data, $rules);
     if ($validator->fails()) {
@@ -72,42 +74,30 @@ class OrderRequestController extends Controller
         'description' => strip_tags($data['description']),
         'category_id' => $data['category_id'],
         'sub_category_id' => $data['sub_category_id'],
-        'required_date' => $data['required_date'] ?? '0000-00-00',
+        'required_date' => $data['required_date'] ?? date('Y-m-d'),
         'customer_id' => $this->customerInfo($data),
         'created_at' => date('Y-m-d H:i:s')
     );
-    DB::table('request_orders')->insert($input);
+    $orderId = DB::table('request_orders')->insertGetId($input);
 
     /** Upload image start */
 
     if ($request->hasFile('file'))
     {
-          $user = $request->auth;
-          $file      = $request->file('file');
+      $files = $data['file'];
+      foreach ($files as $i => $file) {
           $filename  = $file->getClientOriginalName();
           $extension = $file->getClientOriginalExtension();
-          $picture   = $user->pharmacy_branch_id.date('YmdHis').'-'.$extension;
+          $picture   = $orderId.'_'.date('YmdHis').'-'.$extension;
 
-          $dir = 'assets/prescription_image/'. $picture;
-          $file->move('assets/prescription_image', $picture);
+          $dir = 'image/orders/'. $picture;
+          $file->move('image/orders/', $picture);
 
           $im = file_get_contents($dir);
-          $uploded_image_file_bytecode = base64_encode($im);
+          $imageData = base64_encode($im);
 
-          $cartModel = new Cart();
-          $checkFile = $cartModel->where('token', $request->token)->whereNotNull('file_name')->first();
-          // return response()->json(["message" => $checkFile]);
-
-          if($checkFile && file_exists('assets/prescription_image/'. $checkFile->file_name)){
-            unlink('assets/prescription_image/'. $checkFile->file_name);
-          }
-
-          $cartData = $cartModel->where('token', $request->token)->update(['file' => $uploded_image_file_bytecode, 'file_name' => $picture]);
-
-          return response()->json(['success'=>true, "file_name" => $picture]);
-    } else
-    {
-          return response()->json(["message" => "Select image first."]);
+          DB::table('order_images')->insert(['request_order_id' => $orderId, 'original' => $picture, 'image_data' => $imageData]);
+        }
     }
     /** Upload image end */
 
@@ -127,6 +117,7 @@ class OrderRequestController extends Controller
       $data['categories'] = $categories;
       $data['sub_categories'] = $subCategories;
       $data['order'] = $order;
+      $data['images'] = DB::table('order_images')->where('request_order_id', $orderId)->get();
       $data['customer'] = DB::table('customers')->where('id', $order->customer_id)->first();
       // dd($order->description);
       return view('orders.requests.view', $data);
@@ -148,9 +139,7 @@ class OrderRequestController extends Controller
           $orderInput[$key] = $data[$key];
         }
       }
-      if (!DB::table('request_orders')->where('id', $id)->update($orderInput)) {
-        return redirect()->back()->withErrors(['Something went wrong! Order info not updated.']);
-      }
+      DB::table('request_orders')->where('id', $id)->update($orderInput);
       /** Customer update */
       $customerData = array('name', 'email', 'mobile', 'phone', 'address');
       $customerInput = array();
@@ -159,9 +148,26 @@ class OrderRequestController extends Controller
           $customerInput[$key] = $data[$key];
         }
       }
-      if (!DB::table('customers')->where('id', $order->customer_id)->update($customerInput)) {
-        return redirect()->back()->withErrors(['Something went wrong! Customer info not updated.']);
+      DB::table('customers')->where('id', $order->customer_id)->update($customerInput);
+      /** Upload image start */
+      if ($request->hasFile('file'))
+      {
+        $files = $data['file'];
+        foreach ($files as $i => $file) {
+            $filename  = $file->getClientOriginalName();
+            $extension = $file->getClientOriginalExtension();
+            $picture   = $id.'_'.date('YmdHis').'-'.$extension;
+
+            $dir = 'image/orders/'. $picture;
+            $file->move('image/orders/', $picture);
+
+            $im = file_get_contents($dir);
+            $imageData = base64_encode($im);
+
+            DB::table('order_images')->insert(['request_order_id' => $id, 'original' => $picture, 'image_data' => $imageData]);
+          }
       }
+      /** Upload image end */
       Session::flash('message', "Successfully updated.");
       return redirect()->back();
   }
@@ -172,8 +178,18 @@ class OrderRequestController extends Controller
       Session::flash('status', "Successfully Deleted.");
       return redirect()->back();
   }
-
-  public function uploadimage(Request $request)
+  public function imageDelete(Request $request)
   {
+      $image = DB::table('order_images')->where('id', $request->image_id)->first();
+      if($image) {
+        $imagePath = 'image/orders/'.$image->original;
+        if(file_exists($imagePath)) {
+          unlink($imagePath);
+        }
+        $image = DB::table('order_images')->where('id', $request->image_id)->delete();
+      }
+      Session::flash('status', "Successfully Deleted.");
+      return redirect()->back();
   }
+
 }

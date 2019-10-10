@@ -40,6 +40,7 @@ Route::group(['middleware' => ['auth']], function () {
   Route::get('/order-requests/{id}', 'OrderRequestController@view')->name('order_request_view');
   Route::post('/order-requests/{id}', 'OrderRequestController@update')->name('order_request_update');
   Route::get('/order-requests/{id}/delete', 'OrderRequestController@delete')->name('order_request_delete');
+  Route::post('/order-image-delete', 'OrderRequestController@imageDelete')->name('order_image_delete');
 
   // Size
   Route::get('/size/{id?}', 'SizesController@index')->name('size');

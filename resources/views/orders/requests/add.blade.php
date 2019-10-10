@@ -126,43 +126,12 @@
                         </textarea>
                       </div>
                     </div>
-                    <div id="m_repeater_2">
-                      <div class="form-group  m-form__group row">
-                        <label  class="col-lg-3 col-form-label">
-                          Image:
-                        </label>
-                        <div data-repeater-list="" class="col-lg-9">
-                          <div data-repeater-item class="row m--margin-bottom-10">
-                            <div class="col-lg-5">
-                              <div class="input-group">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text">
-                                    <i class="flaticon-multimedia-2"></i>
-                                  </span>
-                                </div>
-                                <input type="file" name="file[]" id="file" class="form-control form-control-danger">
-                              </div>
-                            </div>
-                            <div class="col-lg-2">
-                              <a href="#" data-repeater-delete="" class="btn btn-danger m-btn m-btn--icon m-btn--icon-only">
-                                <i class="la la-remove"></i>
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-lg-3"></div>
-                        <div class="col">
-                          <div data-repeater-create="" class="btn btn btn-primary m-btn m-btn--icon">
-                            <span>
-                              <i class="la la-plus"></i>
-                              <span>
-                                Add
-                              </span>
-                            </span>
-                          </div>
-                        </div>
+                    <div class="form-group m-form__group row">
+                      <label class="col-form-label col-lg-3 col-sm-12">
+                        Images:
+                      </label>
+                      <div class="col-lg-6 ">
+                      <input type="file" class="form-control" name="file[]" multiple />
                       </div>
                     </div>
                   </div>
@@ -265,9 +234,9 @@
                           </button>
                         </div>
                         <div class="col-lg-6">
-                          <button type="reset" class="btn btn-secondary m-btn m-btn--pill m-btn--air">
+                          <a href="{{ route('order_requests') }}" class="btn btn-secondary m-btn m-btn--pill m-btn--air">
                             Cancel
-                          </button>
+                          </a>
                         </div>
                       </div>
                     </div>
