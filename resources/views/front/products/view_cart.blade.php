@@ -73,7 +73,7 @@
                                 @foreach($items as $item)
                                     <tr>
                                         <th scope="row">
-                                            <img class="removeItem" id="{{ $item->id }}" src="img/icon/close-icon.png" alt="">
+                                            <img style="cursor: pointer" class="removeItem" id="{{ $item->id }}" src="img/icon/close-icon.png" alt="">
                                         </th>
                                         <td>
                                             <div class="media">

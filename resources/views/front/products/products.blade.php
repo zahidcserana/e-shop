@@ -13,6 +13,7 @@
                         swal({
                             title: "Successfully added"
                         });
+                        $("#cart_item_count").text(response.count);
                     }
                 }
             });

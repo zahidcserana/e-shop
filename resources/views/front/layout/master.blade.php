@@ -111,15 +111,12 @@ $cartItemNumber = Session::get('cart_id') ? DB::table('cart_items')->where('cart
                         <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
                     </ul>
                     <ul class="top_right">
-                        {{--  <li class="user"><a href="#"><i class="icon-user icons"></i></a></li>  --}}
-                        <li class="cart"><a href="{{route('view_cart')}}"><span style="color: red;font-size: 17px;font-weight: bold">{{ $cartItemNumber }} &nbsp;</span><i class="icon-handbag icons"></i></a></li>
-                        {{--  <li class="h_price">
-                            <select class="selectpicker">
-                                <option>$0.00</option>
-                                <option>$0.00</option>
-                                <option>$0.00</option>
-                            </select>
-                        </li>  --}}
+                      <li class="cart">
+                        <a href="{{route('view_cart')}}">
+                          <span id="cart_item_count" style="color: red;font-size: 17px;font-weight: bold">{{ $cartItemNumber }} &nbsp;</span>
+                          <i class="icon-handbag icons"></i>
+                        </a>
+                      </li>
                     </ul>
                 </div>
             </div>

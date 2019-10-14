@@ -37,7 +37,9 @@ class CartsController extends Controller
 
         DB::table('cart_items')->insert($input);
         $this->_updateCart($cartId);
-        echo json_encode(array('success' => true));
+        $cartItemNumber = DB::table('cart_items')->where('cart_id', $cartId)->count();
+
+        echo json_encode(array('success' => true, 'count' => $cartItemNumber));
     }
 
     public function updateCart(Request $request)
@@ -53,8 +55,10 @@ class CartsController extends Controller
         DB::table('cart_items')->where('id', $data['item_id'])->update($input);
         $this->_updateCart($cartItem->cart_id);
         $item = DB::table('cart_items')->where('id', $data['item_id'])->first();
-
-        echo json_encode(array('success' => true, 'data' => $item, 'cart' => DB::table('carts')->where('id', $cartItem->cart_id)->first()));
+        $cartItemNumber = DB::table('cart_items')->where('cart_id', $cartItem->cart_id)->count();
+        $cart = DB::table('carts')->where('id', $cartItem->cart_id)->first();
+        
+        echo json_encode(array('success' => true, 'count' => $cartItemNumber, 'data' => $item, 'cart' => $cart));
     }
     public function removeCartItem($itemId)
     {
@@ -63,7 +67,10 @@ class CartsController extends Controller
         DB::table('cart_items')->where('id', $itemId)->delete();
         $this->_updateCart($cartId);
 
-        echo json_encode(array('success' => true, 'cart' => DB::table('carts')->where('id', $cartItem->cart_id)->first()));
+        $cartItemNumber = DB::table('cart_items')->where('cart_id', $cartItem->cart_id)->count();
+        $cart = DB::table('carts')->where('id', $cartItem->cart_id)->first();
+
+        echo json_encode(array('success' => true, 'count' => $cartItemNumber, 'cart' => $cart));
     }
 
     private function _updateCart($cartId)
