@@ -50,7 +50,7 @@
                     <h3>checkout register</h3>
                     <ul>
                         <li><a href="#">Home</a></li>
-                        <li><a href="checkout.html">Checkout Register</a></li>
+                        <li><a href="#">Checkout Register</a></li>
                     </ul>
                 </div>
             </div>
