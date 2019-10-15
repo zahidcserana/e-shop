@@ -11,9 +11,13 @@
                 success: function (response) {
                     var response = $.parseJSON(response);
                     if (response.success) {
-                        swal({
-                            title: "Successfully added"
-                        });
+                      swal({
+                        position: 'top',
+                        type: 'success',
+                        title: 'Successfully added',
+                        showConfirmButton: false,
+                        timer: 1500
+                      });
                         $("#cart_item_count").text(response.count);
                     }
                 }

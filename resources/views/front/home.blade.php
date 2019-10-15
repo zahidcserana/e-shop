@@ -11,7 +11,11 @@
                     var response = $.parseJSON(response);
                     if (response.success) {
                       swal({
-                          title: "Successfully added"
+                        position: 'top',
+                        type: 'success',
+                        title: 'Successfully added',
+                        showConfirmButton: false,
+                        timer: 1500
                       });
                       $("#cart_item_count").text(response.count);
                     }
@@ -348,7 +352,7 @@
     <!--================End Our Latest Product Area =================-->
 
     <!--================Feature Big Add Area =================-->
-    <section class="feature_big_add_area">
+    <!-- <section class="feature_big_add_area">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
@@ -371,11 +375,11 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!--================End Feature Big Add Area =================-->
 
     <!--================Product_listing Area =================-->
-    <section class="product_listing_area">
+    <!-- <section class="product_listing_area">
         <div class="container">
             <div class="row p_listing_inner">
                 <div class="col-lg-4">
@@ -446,7 +450,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!--================End Product_listing Area =================-->
 
     <!--================Featured Product Area =================-->
