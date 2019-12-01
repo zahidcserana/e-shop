@@ -38,14 +38,14 @@
                         {{ csrf_field() }}
                         <div class="m-portlet__body">
                             <div class="m-form__section m-form__section--first">
-                                <input type="hidden" name="id" value="{{$brand->id or ''}}">
+                                <input type="hidden" name="id" value="{{$brand->id ?? ''}}">
                                 <div class="form-group m-form__group row">
                                     <label class="col-lg-2 col-form-label">
                                         Name:
                                     </label>
                                     <div class="col-lg-6">
                                         <input type="text" name="name" class="form-control m-input"
-                                               value="{{$brand->name or ''}}"
+                                               value="{{$brand->name ?? ''}}"
                                                placeholder="Enter brand name">
                                     </div>
                                     <div class="col-lg-1">

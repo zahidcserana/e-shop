@@ -549,6 +549,7 @@ data-menu-vertical="true"data-menu-dropdown="true" data-menu-scrollable="true" d
                             </span>
                         </a>
                     </li>
+                    -->
                     <li class="m-menu__item " aria-haspopup="true"  data-redirect="true">
                         <a  href="{{route('brand')}}" class="m-menu__link ">
                             <i class="m-menu__link-bullet m-menu__link-bullet--line">
@@ -558,7 +559,7 @@ data-menu-vertical="true"data-menu-dropdown="true" data-menu-scrollable="true" d
                                 Brand
                             </span>
                         </a>
-                    </li> -->
+                    </li>
                 </ul>
             </div>
         </li>

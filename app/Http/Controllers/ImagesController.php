@@ -21,7 +21,8 @@ class ImagesController extends Controller
             // upload original Image
             $fileOriginal = Keygen::numeric(8)->generate();
             $fileOriginal = $fileOriginal . "." . $extention;
-            $destinationPath = public_path() . '/image/products';
+            $destinationPath = 'image/products';
+            // $destinationPath = public_path() . '/image/products';
             $originalFilePath = $file->move($destinationPath, $fileOriginal);
             // upload Large Image
             $fileLarge = Keygen::numeric(8)->generate();
@@ -35,14 +36,14 @@ class ImagesController extends Controller
             );
             $imageId = DB::table('images')->insertGetid($input);
             $status = true;
-            
+
             /** Make as Feature Image */
             $product = DB::table('products')->where('id', $request->product_id)->first();
             if(!$product->image_id){
                 $data = array('image_id' => $imageId);
                 $product = DB::table('products')->where('id', $request->product_id)->update($data);
             }
-           
+
         }
         if ($status) {
             return json_encode(['success' => true, 'message' => 'Picture successfully uploaded!']);
