@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-lg-6 col-md-4 col-6">
                     <aside class="f_widget f_about_widget">
-                        <a href="{{route('home_page')}}"><img src="{{asset('front/img/df-2.gif')}}" alt=""></a>
+                        <a href="{{route('home_page')}}"><img src="{{asset('front/img/'.$store->front_logo)}}" alt=""></a>
 
                         <br>
                         <ul>
@@ -43,12 +43,11 @@
             </div>
         </div>
         <div class="footer_copyright">
-            <h5>©
-                <script>document.write(new Date().getFullYear());</script>
+            <h5>
                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 Copyright &copy;<script>document.write(new Date().getFullYear());</script>
-                All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a
-                        href="https://colorlib.com" target="_blank">Colorlib</a>
+                All rights reserved | {{ $store->footer_front }} <i class="fa fa-heart-o" aria-hidden="true"></i> by <a
+                        href="{{ $store->dev_site }}" target="_blank">{{ $store->dev_company }}</a>
                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             </h5>
         </div>

@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 $routeName = Route::getCurrentRoute()->getName();
+$store = DB::table('stores')->find(1);
 ?>
 <!DOCTYPE html>
 <html lang="en" >
@@ -32,7 +33,7 @@ $routeName = Route::getCurrentRoute()->getName();
         <link href="{{ asset('assets/demo/demo3/base/style.bundle.css') }}" rel="stylesheet">
         <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 		<!--end::Base Styles -->
-        <link rel="shortcut icon" href="{{ asset('assets/demo/demo3/media/img/logo/favicon.ico') }}" />
+        <link rel="shortcut icon" href="{{ asset('assets/demo/demo3/media/img/logo/'.$store->favicon) }}" />
 		@yield('include_js')
 	</head>
 	<!-- end::Head -->
@@ -50,7 +51,7 @@ $routeName = Route::getCurrentRoute()->getName();
 							<div class="m-stack m-stack--ver m-stack--general">
 								<div class="m-stack__item m-stack__item--middle m-stack__item--center m-brand__logo">
 									<a href="{{route('home')}}" class="m-brand__logo-wrapper">
-										<img alt="" src="{{asset('assets/demo/demo3/media/img/logo/logo.png')}}"/>
+										<img alt="" src="{{asset('assets/demo/demo3/media/img/logo/'.$store->admin_logo)}}"/>
 									</a>
 								</div>
 								<div class="m-stack__item m-stack__item--middle m-brand__tools">
@@ -969,7 +970,7 @@ $routeName = Route::getCurrentRoute()->getName();
 										<li class="m-nav__item m-topbar__user-profile m-topbar__user-profile--img m-dropdown m-dropdown--medium m-dropdown--arrow m-dropdown--header-bg-fill m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" data-dropdown-toggle="click">
 											<a href="#" class="m-nav__link m-dropdown__toggle">
 												<span class="m-topbar__userpic">
-													<img src="{{asset('assets/app/media/img/users/user.png')}}" alt=""/>
+													<img src="{{asset('assets/app/media/img/users/' . $store->profile_pic )}}" alt=""/>
 												</span>
 											</a>
 											<div class="m-dropdown__wrapper">
@@ -978,7 +979,7 @@ $routeName = Route::getCurrentRoute()->getName();
 													<div class="m-dropdown__header m--align-center" style="background: url(assets/app/media/img/misc/user_profile_bg.jpg); background-size: cover;">
 														<div class="m-card-user m-card-user--skin-dark">
 															<div class="m-card-user__pic">
-																<img src="{{asset('assets/app/media/img/users/user.png')}}" alt=""/>
+																<img src="{{asset('assets/app/media/img/users/'.$store->profile_pic)}}" alt=""/>
 															</div>
 															<div class="m-card-user__details">
 																<span class="m-card-user__name m--font-weight-500">
@@ -1107,9 +1108,9 @@ $routeName = Route::getCurrentRoute()->getName();
 					<div class="m-stack m-stack--flex-tablet-and-mobile m-stack--ver m-stack--desktop">
 						<div class="m-stack__item m-stack__item--left m-stack__item--middle m-stack__item--last">
 							<span class="m-footer__copyright">
-								2017 &copy; Metronic theme by
-								<a href="https://keenthemes.com" class="m-link">
-									Keenthemes
+								2019 &copy;
+								<a href="https://softproit.com/" class="m-link">
+									 © SOFT PRO IT
 								</a>
 							</span>
 						</div>

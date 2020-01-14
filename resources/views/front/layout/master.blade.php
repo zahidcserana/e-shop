@@ -3,7 +3,7 @@
 use App\Model\Category;
 use App\Model\Cart;
 $categories = DB::table('categories')->get();
-
+$store = DB::table('stores')->find(1);
 $cartItemNumber = Session::get('cart_id') ? DB::table('cart_items')->where('cart_id', Session::get('cart_id'))->count() : 0;
 ?>
 <!DOCTYPE html>
@@ -98,7 +98,7 @@ $cartItemNumber = Session::get('cart_id') ? DB::table('cart_items')->where('cart
                 <div class="top_header_middle">
                     <a href="#"><i class="fa fa-phone"></i> Call Us: <span>{{ env('PHONE') }}</span></a>
                     <a href="#"><i class="fa fa-envelope"></i> Email: <span>{{ env('EMAIL') }}</span></a>
-                    <a href="{{route('home_page')}}"><img src="{{asset('front/img/df-2.gif')}}" alt=""></a>
+                    <a href="{{route('home_page')}}"><img src="{{asset('front/img/'. $store->front_logo)}}" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-3">
