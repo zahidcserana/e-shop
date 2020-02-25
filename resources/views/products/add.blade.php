@@ -325,10 +325,10 @@
                             <input type="hidden" name="id" id="product_id" value="{{$product->id??''}}">
                             <div class="m-form__section m-form__section--first">
                                 <div class="form-group m-form__group row">
-                                    <label class="col-lg-2 col-form-label">
+                                    <label class="col-lg-1 col-form-label">
                                         Title:
                                     </label>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-5">
                                         <input type="text" class="form-control m-input" name="name"
                                                placeholder="Enter product name" value="{{$product->name ?? ''}}">
                                     </div>
@@ -339,10 +339,10 @@
                                     </div>
                                 </div>
                                 <div {!!$brands==null?'style="display: none;"':''!!} class="form-group m-form__group row">
-                                    <label class="col-lg-2 col-form-label">
+                                    <label class="col-lg-1 col-form-label">
                                         Brand:
                                     </label>
-                                    <div class="col-lg-8">
+                                    <div class="col-lg-3">
                                         <select class="form-control m-input m-input--air"
                                                 id="brand_id" name="brand_id">
                                             <option value="">Select Brand</option>
@@ -351,17 +351,12 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                </div>
-                                <div class="form-group m-form__group row">
-                                    <label class="col-lg-2 col-form-label">
-                                        Description:
+                                    <label class="col-lg-1 col-form-label">
+                                        Price:
                                     </label>
-                                    <div class="col-lg-8">
-                                        <textarea name="description" class="form-control md-input"
-                                                  data-provide="markdown" rows="10" style="resize: none;"
-                                                  aria-describedby="markdown-error" aria-invalid="false">
-                                            {{$product->description ?? ''}}
-                                        </textarea>
+                                    <div class="col-lg-3">
+                                      <input type="text" class="form-control m-input" name="price"
+                                             placeholder="Price" value="{{$product->price ?? ''}}">
                                     </div>
                                 </div>
                                 <div {!!$colors==null?'style="display: none;"':''!!} class="row">
@@ -406,7 +401,7 @@
                                     <label class="col-lg-1 col-form-label">
                                         Category:
                                     </label>
-                                    <div class="col-lg-2">
+                                    <div class="col-lg-3">
                                         <select class="form-control m-input m-input--air"
                                                 id="category_id" name="category_id"
                                                 onchange="getSubCategory(this.value)">
@@ -421,7 +416,7 @@
                                     >
                                         Sub Category:
                                     </label>
-                                    <div class="col-lg-2"
+                                    <div class="col-lg-3"
                                          id="sub_cat_list" {!!$product==null?'style="display: none;"':''!!}>
                                         <select class="form-control m-input m-input--air"
                                                 id="sub_category_id" name="sub_category_id">
@@ -447,7 +442,18 @@
                                         </select>
                                     </div>  --}}
                                 </div>
-
+                                <div class="form-group m-form__group row">
+                                    <label class="col-lg-1 col-form-label">
+                                        Description:
+                                    </label>
+                                    <div class="col-lg-7">
+                                        <textarea name="description" class="form-control md-input"
+                                                  data-provide="markdown" rows="10" style="resize: none;"
+                                                  aria-describedby="markdown-error" aria-invalid="false">
+                                            {{$product->description ?? ''}}
+                                        </textarea>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="m-portlet__foot m-portlet__foot--fit">

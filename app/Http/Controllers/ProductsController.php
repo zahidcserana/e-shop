@@ -94,6 +94,7 @@ class ProductsController extends Controller
       }
       $input = array(
           'name' => $data['name'],
+          'price' => $data['price'],
           'brand_id' => $data['brand_id'],
           'description' => strip_tags($data['description']),
           // 'color' => json_encode($data['color']),
