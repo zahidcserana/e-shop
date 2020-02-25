@@ -71,9 +71,24 @@ class OrderController extends Controller
           }
 
       }
+
+      $order->customer;
       $data['items'] = $orderItems;
+      $data['orderStatus'] = \config('myConfig.order_status');
       $data['order'] = $order;
       return view('orders.details', $data);
+  }
+
+  public function edit($id, Request $request) {
+    $data = $request->except('_token');
+    $order = Order::find($id);
+    if($data['discount']) {
+      $data['total_payble'] = $order->total_payble - $data['discount'];
+    }
+    $order->update($data);
+
+    return redirect()->route('order_details', $id)->with('status', 'Data successfully saved!');
+    // return redirect()->route($this->routeName)->with('error','Not found!');
   }
 
   public function delete($id)
