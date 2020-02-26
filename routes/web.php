@@ -21,6 +21,12 @@ Route::group(['middleware' => ['auth']], function () {
   Route::post('/add-product', 'ProductsController@add')->name('add-product');
   Route::get('/product-delete/{id}', 'ProductsController@delete')->name('product-delete');
 
+  /** Customers */
+  Route::get('/customers', 'CustomerController@index')->name('customers');
+  Route::get('/customer-list', 'CustomerController@customerList')->name('customer-list');
+  Route::get('/customers/{id}', 'CustomerController@view')->name('customers_view');
+  Route::post('/customers/{id}', 'CustomerController@update')->name('customers_update');
+
   // Product Image
   Route::post('/product_image', 'ImagesController@add')->name('product_image');
   Route::get('/image-feature', 'ImagesController@imageFeature')->name('image_feature');
