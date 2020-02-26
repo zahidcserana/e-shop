@@ -14,11 +14,11 @@ return [
     'bill_no_size' => 6,
     'chalan_no_size' => 6,
 
-    'company_name' => 'ANC Ltd.',
-    'company_email' => 'info@anc.com',
+    'company_name' => 'CARNMOTO',
+    'company_email' => 'info@carnmoto.com',
     'company_mobile' => '01708887754',
     'company_phone' => '(804) 123-5432',
-    'company_address' => 'Tejgaon, Dhaka',
+    'company_address' => 'Mirpur, Dhaka',
 
     'req_status' => [
         'PENDING' => 'PENDING',
@@ -61,11 +61,9 @@ return [
     ],
 
     'payment_status' => [
-        'INITIATED' => 'INITIATED',
-        'DEPOSITED' => 'DEPOSITED',
-        'PENDING' => 'PENDING',
-        'RECEIVED' => 'RECEIVED',
-        'REJECTED' => 'REJECTED',
+        'PAID' => 'PAID',
+        'PARTIAL_PAID' => 'PARTIAL PAID',
+        'UNPAID' => 'UNPAID'
     ],
 
     'order_payment' => [

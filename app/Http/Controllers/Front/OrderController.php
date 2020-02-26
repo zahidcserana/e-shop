@@ -56,6 +56,7 @@ class OrderController extends Controller
             'customer_id' => $customerId,
         );
         $orderId = DB::table('orders')->insertGetid($orderInput);
+        Order::find($orderId)->update(['code'=>generateInvoiceNo($orderId)]);
         $cartItems = DB::table('cart_items')->where('cart_id', $cartId)->get();
         foreach ($cartItems as $item) {
             $itemInput  = array(

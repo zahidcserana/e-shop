@@ -13,43 +13,7 @@
 @endsection
 
 @section('content')
-    <!-- BEGIN: Subheader -->
-    <div class="m-subheader ">
-        <div class="d-flex align-items-center">
-            <div class="mr-auto">
-                <h3 class="m-subheader__title m-subheader__title--separator">
-                    Order Details
-                </h3>
-                <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
-                    <li class="m-nav__item m-nav__item--home">
-                        <a href="#" class="m-nav__link m-nav__link--icon">
-                            <i class="m-nav__link-icon la la-home"></i>
-                        </a>
-                    </li>
-                    <li class="m-nav__separator">
-                        -
-                    </li>
-                    <li class="m-nav__item">
-                        <a href="{{route('orders')}}" class="m-nav__link">
-											<span class="m-nav__link-text">
-												Orders
-											</span>
-                        </a>
-                    </li>
-                    <li class="m-nav__separator">
-                        -
-                    </li>
-                    <li class="m-nav__item">
-                        <a href="{{route('order_edit',$order['id'])}}" class="m-nav__link">
-											<span class="m-nav__link-text">
-												Details
-											</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    
     <!-- END: Subheader -->
     <div class="m-content">
         @if ($errors->any())
@@ -108,8 +72,8 @@
                             <td colspan="2"><h4>Order Info:</h4></td>
                           </tr>
                           <tr>
-                            <td><span class="label-title">Order Id:</span></td>
-                            <td>{{ $order->id }}</td>
+                            <td><span class="label-title"> Code:</span></td>
+                            <td>{{ $order->code }}</td>
                           </tr>
                           <tr>
                             <td><span class="label-title"> Status:</span></td>
@@ -126,6 +90,23 @@
                         </table>
                       </div>
                       <div class="col-4">
+                        <table>
+                          <tr>
+                            <td colspan="2"><h4>{{ \config('myConfig.company_name') }}</h4></td>
+                          </tr>
+                          <tr>
+                            <td colspan="2"><span>{{ \config('myConfig.company_email') }}</span></td>
+                          </tr>
+                          <tr>
+                            <td colspan="2"><span>{{ \config('myConfig.company_mobile') }}</span></td>
+                          </tr>
+                          <tr>
+                            <td colspan="2"><span>{{ \config('myConfig.company_phone') }}</span></td>
+                          </tr>
+                          <tr>
+                            <td colspan="2"><span>{{ \config('myConfig.company_address') }}</span></td>
+                          </tr>
+                        </table>
                       </div>
                     </div>
                     <div class="m-form" name="data-form">

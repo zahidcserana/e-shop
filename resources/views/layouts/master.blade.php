@@ -1205,7 +1205,14 @@ $store = DB::table('stores')->find(1);
         <!--begin::Page Snippets -->
         <script src="{{ asset('assets/app/js/dashboard.js') }}" type="text/javascript"></script>
         <script src="{{ asset('js/custom.js') }}" type="text/javascript"></script>
-
+				@yield('script')
+				<script>
+					$(document).ready(function(){
+						$('.delete').click(function () {
+								return confirm("Are you sure?");
+						});
+					});
+				</script>
 				@yield('footer')
 		<!--end::Page Snippets -->
 	</body>
