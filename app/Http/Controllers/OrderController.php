@@ -75,6 +75,7 @@ class OrderController extends Controller
       $order->customer;
       $data['items'] = $orderItems;
       $data['orderStatus'] = \config('myConfig.order_status');
+      $data['paymentStatus'] = \config('myConfig.payment_status');
       $data['order'] = $order;
       return view('orders.details', $data);
   }

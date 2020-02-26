@@ -34,7 +34,7 @@
                             <a href="#">
                                 <div class="m-widget26">
                                     <div class="m-widget26__number">
-                                         111
+                                         {{ $order }}
                                         <small>
                                             Total Order
                                         </small>
@@ -55,9 +55,9 @@
                             <a href="#">
                                 <div class="m-widget26">
                                     <div class="m-widget26__number">
-                                    210
+                                    {{ $customer }}
                                         <small>
-                                            Total Invoice
+                                            Total Customer
                                         </small>
                                     </div>
                                     <div class="m-widget26__chart" style="height:90px; width: 220px;">

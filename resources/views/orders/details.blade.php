@@ -223,6 +223,18 @@
                                     </select>
                                   </div>
                                 </div>
+                                <div class="form-group m-form__group row">
+                                  <div class="col-6">
+                                      <span class="label-title">Payment:</span>
+                                  </div>
+                                  <div class="col-2">
+                                    <select class="form-control m-input m-input--air" name="payment" style="width: 100%;">
+                                      @foreach($paymentStatus as $k=>$v)
+                                      <option {{ $k == $order->payment ? 'selected = "selected"':'' }} value='{{ $k }}'>{{ $v }}</option>
+                                      @endforeach
+                                    </select>
+                                  </div>
+                                </div>
                             </div>
                             <div class="m-portlet__foot m-portlet__foot--fit">
                                 <div class="m-form__actions m-form__actions">
