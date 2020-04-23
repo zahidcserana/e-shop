@@ -50,19 +50,19 @@
                           </tr>
                           <tr>
                             <td><span class="label-title">Name:</span></td>
-                            <td>{{ $order->customer->name }}</td>
+                            <td>{{ $order->customer->name ?? '' }}</td>
                           </tr>
                           <tr>
                             <td><span class="label-title">Mobile:</span></td>
-                            <td>{{ $order->customer->mobile }}</td>
+                            <td>{{ $order->customer->mobile ?? '' }}</td>
                           </tr>
                           <tr>
                             <td><span class="label-title">Email:</span></td>
-                            <td>{{ $order->customer->email }}</td>
+                            <td>{{ $order->customer->email ?? '' }}</td>
                           </tr>
                           <tr>
                             <td><span class="label-title">Address:</span></td>
-                            <td>{{ $order->customer->address }}</td>
+                            <td>{{ $order->customer->address ?? '' }}</td>
                           </tr>
                         </table>
                       </div>

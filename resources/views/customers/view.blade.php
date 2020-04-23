@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('include_js')
-    @parent
+@parent
 
 @endsection
 @section('content')
@@ -15,7 +15,7 @@
             </div>
             <div class="m-card-profile__pic">
               <div class="m-card-profile__pic-wrapper">
-                <img src="{{ asset('img/user.png') }}" alt=""/>
+                <img src="{{ asset('img/user.png') }}" alt="" />
               </div>
             </div>
             <div class="m-card-profile__details">
@@ -27,7 +27,7 @@
               </a>
             </div>
           </div>
-          <ul class="m-nav m-nav--hover-bg m-portlet-fit--sides">
+          <!-- <ul class="m-nav m-nav--hover-bg m-portlet-fit--sides">
             <li class="m-nav__separator m-nav__separator--fit"></li>
             <li class="m-nav__section m--hide">
               <span class="m-nav__section-text">
@@ -91,26 +91,9 @@
                 </span>
               </a>
             </li>
-          </ul>
+          </ul> -->
           <div class="m-portlet__body-separator"></div>
           <div class="m-widget1 m-widget1--paddingless">
-            <div class="m-widget1__item">
-              <div class="row m-row--no-padding align-items-center">
-                <div class="col">
-                  <h3 class="m-widget1__title">
-                    Member Profit
-                  </h3>
-                  <span class="m-widget1__desc">
-                    Awerage Weekly Profit
-                  </span>
-                </div>
-                <div class="col m--align-right">
-                  <span class="m-widget1__number m--font-brand">
-                    +$17,800
-                  </span>
-                </div>
-              </div>
-            </div>
             <div class="m-widget1__item">
               <div class="row m-row--no-padding align-items-center">
                 <div class="col">
@@ -118,12 +101,12 @@
                     Orders
                   </h3>
                   <span class="m-widget1__desc">
-                    Weekly Customer Orders
+                    Number of Orders
                   </span>
                 </div>
                 <div class="col m--align-right">
-                  <span class="m-widget1__number m--font-danger">
-                    +1,800
+                  <span class="m-widget1__number m--font-brand">
+                    {{ $summary['count'] }}
                   </span>
                 </div>
               </div>
@@ -132,15 +115,83 @@
               <div class="row m-row--no-padding align-items-center">
                 <div class="col">
                   <h3 class="m-widget1__title">
-                    Issue Reports
+                    Orders Amount
                   </h3>
                   <span class="m-widget1__desc">
-                    System bugs and issues
+                    Total Amount of Orders
+                  </span>
+                </div>
+                <div class="col m--align-right">
+                  <span class="m-widget1__number m--font-danger">
+                    {{ $summary['sub_total'] }}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="m-widget1__item">
+              <div class="row m-row--no-padding align-items-center">
+                <div class="col">
+                  <h3 class="m-widget1__title">
+                    Discount
+                  </h3>
+                  <span class="m-widget1__desc">
+                    Total Discount
+                  </span>
+                </div>
+                <div class="col m--align-right">
+                  <span class="m-widget1__number m--font-danger">
+                    {{ $summary['discount'] }}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="m-widget1__item">
+              <div class="row m-row--no-padding align-items-center">
+                <div class="col">
+                  <h3 class="m-widget1__title">
+                    Payable Amount
+                  </h3>
+                  <span class="m-widget1__desc">
+                    Total Payable Amount
                   </span>
                 </div>
                 <div class="col m--align-right">
                   <span class="m-widget1__number m--font-success">
-                    -27,49%
+                    {{ $summary['payable'] }}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="m-widget1__item">
+              <div class="row m-row--no-padding align-items-center">
+                <div class="col">
+                  <h3 class="m-widget1__title">
+                    Paid Amount
+                  </h3>
+                  <span class="m-widget1__desc">
+                    Total Paid Amount
+                  </span>
+                </div>
+                <div class="col m--align-right">
+                  <span class="m-widget1__number m--font-success">
+                    {{ $summary['payable'] - $summary['due'] }}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="m-widget1__item">
+              <div class="row m-row--no-padding align-items-center">
+                <div class="col">
+                  <h3 class="m-widget1__title">
+                    Due Amount
+                  </h3>
+                  <span class="m-widget1__desc">
+                    Total Due Amount
+                  </span>
+                </div>
+                <div class="col m--align-right">
+                  <span class="m-widget1__number m--font-success">
+                    {{ $summary['due'] }}
                   </span>
                 </div>
               </div>
@@ -304,6 +355,6 @@
 </div>
 @endsection
 @section('script')
-    @parent
+@parent
 
 @endsection
