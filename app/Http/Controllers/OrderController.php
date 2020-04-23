@@ -52,7 +52,6 @@ class OrderController extends Controller
   public function details($orderId)
   {
     $order = Order::findOrFail($orderId);
-
     $orderItems = array();
     if (empty($order)) {
       return redirect()->route('home_page');
@@ -84,9 +83,18 @@ class OrderController extends Controller
   {
     $data = $request->except('_token');
     $order = Order::find($id);
-    $data['paid'] = $order->paid + $data['paid'];
-    $data['total_payble'] = $order->sub_total - $data['discount'];
-    $data['due'] = $data['total_payble'] - $data['paid'];
+    if ($order->payment != 'PAID') {
+      $data['paid'] = $order->paid + $data['paid'];
+      $data['total_payble'] = $order->sub_total - $data['discount'];
+      $data['due'] = $data['total_payble'] - $data['paid'];
+      if ($data['due'] == 0) {
+        $data['payment'] = 'PAID';
+      } else if ($data['due'] == $data['total_payble']) {
+        $data['payment'] = 'UNPAID';
+      } else if ($data['due'] < $data['total_payble']) {
+        $data['payment'] = 'PARTIAL_PAID';
+      }
+    }
     $order->update($data);
 
     return redirect()->route('order_details', $id)->with('status', 'Data successfully saved!');

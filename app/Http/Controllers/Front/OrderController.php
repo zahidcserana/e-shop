@@ -50,6 +50,7 @@ class OrderController extends Controller
             'quantity' => $cart->quantity,
             'sub_total' => $cart->sub_total,
             'total_payble' => $cart->total_payble,
+            'due' => $cart->total_payble,
             'vat' => $cart->vat,
             'discount' => $cart->discount,
             'created_at' => date('Y-m-d H:i:s'),

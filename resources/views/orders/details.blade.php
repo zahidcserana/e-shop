@@ -6,10 +6,10 @@
     if (value == '') {
       value = 0;
     }
-    let num = parseFloat($("#payble_amount").val()) - parseFloat(value);
+    let num = parseFloat($("#sub_total").val()) - parseFloat(value);
     let due = parseFloat($("#due_amount").val()) - parseFloat(value);
     $("#payble").text(num.toFixed(2));
-    $("#due").text(due.toFixed(2));
+    // $("#due").text(due.toFixed(2));
   }
 
   function tenderedAmount(value) {
@@ -197,7 +197,13 @@
                     <span class="label-title">Discount:</span>
                   </div>
                   <div class="col-2">
-                    <input onkeyup="applyDsicount(this.value)" class="form-control m-input" type="text" id='discount' name="discount" value="{{ $order->discount }}">
+                    @if($order->payment == 'PAID')
+                    <h5 class="mb-0 float-right" id="payble">
+                      {{ number_format($order->discount, 2) }} <small>&#2547;</small>
+                    </h5>
+                    @else
+                    <input {{ $order->payment == 'PAID' ? "readonly": "" }} onkeyup="applyDsicount(this.value)" class="form-control m-input" type="text" id='discount' name="discount" value="{{ $order->discount }}">
+                    @endif
                   </div>
                 </div>
                 <div class="form-group m-form__group row">
@@ -206,12 +212,13 @@
                   </div>
                   <div class="col-2">
                     <input type="hidden" id="payble_amount" value="{{ $order->total_payble ?? 0 }}">
+                    <input type="hidden" id="sub_total" value="{{ $order->sub_total ?? 0 }}">
                     <h5 class="mb-0 float-right" id="payble">
                       {{ number_format($order->total_payble, 2) }} <small>&#2547;</small>
                     </h5>
                   </div>
                 </div>
-                <div class="form-group m-form__group row">
+                <div {{ $order->payment == 'PAID' ? "style=display:none": "" }} class="form-group m-form__group row">
                   <div class="col-6">
                     <span class="label-title">Paid:</span>
                   </div>
@@ -222,6 +229,7 @@
                     </h5>
                   </div>
                 </div>
+                @if($order->payment != 'PAID')
                 <div class="form-group m-form__group row">
                   <div class="col-6">
                     <span class="label-title">Tendered:</span>
@@ -230,7 +238,8 @@
                     <input class="form-control m-input" name="paid" type="text">
                   </div>
                 </div>
-                <div class="form-group m-form__group row">
+                @endif
+                <div {{ $order->payment == 'PAID' ? "style=display:none": "" }} class="form-group m-form__group row">
                   <div class="col-6">
                     <span class="label-title">Due:</span>
                   </div>
@@ -253,7 +262,7 @@
                     </select>
                   </div>
                 </div>
-                <div class="form-group m-form__group row">
+                <!-- <div class="form-group m-form__group row">
                   <div class="col-6">
                     <span class="label-title">Payment:</span>
                   </div>
@@ -264,7 +273,7 @@
                       @endforeach
                     </select>
                   </div>
-                </div>
+                </div> -->
               </div>
               <div class="m-portlet__foot m-portlet__foot--fit">
                 <div class="m-form__actions m-form__actions">

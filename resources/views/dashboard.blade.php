@@ -28,13 +28,13 @@
         <div class="col-xl-12">
             <!--begin:: Widgets/Quick Stats-->
             <div class="row m-row--full-height">
-            <div class="col-sm-12 col-md-12 col-lg-2">
+                <div class="col-sm-12 col-md-12 col-lg-2">
                     <div class="m-portlet m-portlet--half-height m-portlet--border-bottom-brand ">
                         <div class="m-portlet__body">
-                            <a href="#">
+                            <a href="{{ route('orders') }}">
                                 <div class="m-widget26">
                                     <div class="m-widget26__number">
-                                         {{ $order }}
+                                        {{ $order }}
                                         <small>
                                             Total Order
                                         </small>
@@ -52,10 +52,10 @@
                 <div class="col-sm-12 col-md-12 col-lg-2">
                     <div class="m-portlet m-portlet--half-height m-portlet--border-bottom-success ">
                         <div class="m-portlet__body">
-                            <a href="#">
+                            <a href="{{ route('customers') }}">
                                 <div class="m-widget26">
                                     <div class="m-widget26__number">
-                                    {{ $customer }}
+                                        {{ $customer }}
                                         <small>
                                             Total Customer
                                         </small>
