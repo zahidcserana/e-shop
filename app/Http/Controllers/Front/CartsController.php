@@ -57,7 +57,7 @@ class CartsController extends Controller
         $item = DB::table('cart_items')->where('id', $data['item_id'])->first();
         $cartItemNumber = DB::table('cart_items')->where('cart_id', $cartItem->cart_id)->count();
         $cart = DB::table('carts')->where('id', $cartItem->cart_id)->first();
-        
+
         echo json_encode(array('success' => true, 'count' => $cartItemNumber, 'data' => $item, 'cart' => $cart));
     }
     public function removeCartItem($itemId)
@@ -105,13 +105,12 @@ class CartsController extends Controller
             $cartItem->product = Product::find($cartItem->product_id);
             $image = empty($cartItem->product->image_id) == true ? 'product.gif' : Image::find($cartItem->product->image_id)->large;
 
-            if (file_exists('image/products/'.$image)) {
-                $cartItem->image = 'image/products/'.$image;
-            }else{
+            if (file_exists('image/products/' . $image)) {
+                $cartItem->image = 'image/products/' . $image;
+            } else {
 
                 $cartItem->image = 'image/products/product.gif';
             }
-
         }
         $data['items'] = $cartItems;
         $data['cart'] = $cart;
