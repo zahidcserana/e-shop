@@ -7,7 +7,7 @@
 */
 
 Route::get('/admin', function () {
-    return view('auth.login');
+  return view('auth.login');
 });
 
 Auth::routes();
@@ -35,6 +35,7 @@ Route::group(['middleware' => ['auth']], function () {
   Route::get('/order-all', 'OrderController@index')->name('orders');
   Route::get('/order-list', 'OrderController@orderList')->name('order-list');
   Route::get('/orders/{order?}/details', 'OrderController@details')->name('order_details');
+  Route::get('/orders/pdf', 'OrderController@downloadPDF')->name('order_pdf');
   Route::post('/orders/{id}', 'OrderController@edit')->name('order_edit');
   Route::get('/orders/{id}/delete', 'OrderController@delete')->name('order_delete');
 
@@ -74,7 +75,6 @@ Route::group(['middleware' => ['auth']], function () {
   Route::get('/sub-sub-category-delete/{id}', 'CategoriesController@deleteSubSub')->name('sub-sub-category-delete');
   Route::post('/sub-sub-category', 'CategoriesController@addSubSub')->name('sub-sub-category');
   Route::get('/get-sub-sub-cat-by-sub-cat', 'CategoriesController@getSubSubCatBySubCat')->name('get-sub-sub-cat-by-sub-cat');
-
 });
 
 /** ########################################  FRONT SECTION ################################# **/

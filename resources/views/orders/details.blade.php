@@ -144,9 +144,6 @@
               <div for="example-text-input" class="col-2 col-form-label">
                 Sub Total
               </div>
-              <div for="example-text-input" class="col-2 col-form-label">
-                Amount
-              </div>
             </div>
             @foreach($items as $item)
             <div class="form-group m-form__group row">
@@ -165,9 +162,6 @@
 
               <div class="col-2">
                 <span>{{ $item->sub_total }}</span>
-              </div>
-              <div class="col-2">
-                <span>{{ $item->total_payble }}</span>
               </div>
             </div>
             @endforeach
@@ -283,6 +277,10 @@
                       <button type="submit" class="btn btn-success">
                         Submit
                       </button>
+                      <a href="{{route('order_pdf')}}" class="btn btn-primary">
+                        <i class="m-nav__link-icon flaticon-download"></i>
+                        <span class="m-nav__link-text"> Download </span>
+                      </a>
                       <a class="btn btn-secondary" href="{{route('orders')}}">Back</a>
                     </div>
                   </div>

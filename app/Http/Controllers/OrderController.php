@@ -7,6 +7,7 @@ use App\Model\Order;
 use App\Model\Product;
 use App\Model\Image;
 use DB;
+use PDF;
 
 class OrderController extends Controller
 {
@@ -21,9 +22,20 @@ class OrderController extends Controller
     $data = array();
     return view('orders.index', $data);
   }
-  public function orderList()
+  public function orderList(Request $request)
   {
-    $orders = DB::table('orders')->orderBy('id', 'DESC')->get();
+    $query = $request->query('query');
+
+    $conditions = array();
+
+    if (!empty($query['code'])) {
+      $conditions = array_merge(array(['orders.code', 'LIKE', '%' . $query['code'] . '%']), $conditions);
+    }
+    if (!empty($query['status'])) {
+      $conditions = array_merge(array(['orders.order_status', 'LIKE', $query['status']]), $conditions);
+    }
+
+    $orders = DB::table('orders')->where($conditions)->orderBy('id', 'DESC')->get();
     // dd($orders);
     foreach ($orders as $order) {
       $orderId = $order->id;
@@ -48,8 +60,16 @@ class OrderController extends Controller
     echo json_encode($orders);
   }
 
+  public function downloadPDF(Request $request)
+  {
+    $order = $request->session()->get('order');
+    $pdf = PDF::loadView('order.pdf', compact('order'))->setPaper('a4', 'portrait');
+
+    return $pdf->download('orders.pdf');
+  }
+
   /** Order details */
-  public function details($orderId)
+  public function details($orderId, Request $request)
   {
     $order = Order::findOrFail($orderId);
     $orderItems = array();
@@ -70,6 +90,7 @@ class OrderController extends Controller
         $item->image = '/image/products/product.gif';
       }
     }
+    $request->session()->put('order', $order);
 
     $order->customer;
     $data['items'] = $orderItems;

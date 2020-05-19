@@ -47,6 +47,8 @@ class OrderController extends Controller
         $data = $request->except('token');
         $customerId = $this->customerInfo($data);
         $orderInput  = array(
+            'payment_method' => $data['payment_method'],
+            'transaction_id' => $data['transaction_id'],
             'quantity' => $cart->quantity,
             'sub_total' => $cart->sub_total,
             'total_payble' => $cart->total_payble,
