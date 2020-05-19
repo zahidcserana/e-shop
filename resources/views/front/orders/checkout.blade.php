@@ -1,9 +1,6 @@
 @extends('front.layout.master')
 @section('header_js')
 @parent
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script>
     function increase(itemId) {
         var result = document.getElementById('sst_' + itemId);
@@ -137,16 +134,16 @@
                                 </div>
                             </div>
                             <div class="col-lg-12">
-                                <label for="address">Payment Method <span>*</span></label>
+                                <label for="address">Payment Method <span>*  : &nbsp;&nbsp;</span></label>
 
-                                <label class="checkbox-inline">
-                                    <input type="checkbox" name="payment_method" value="DBBL">DBBL
+                                <label class="radio-inline">
+                                    <input type="radio" name="payment_method" value="DBBL"> DBBL &nbsp;&nbsp;
                                 </label>
-                                <label class="checkbox-inline">
-                                    <input type="checkbox" name="payment_method" value="Rocket">Rocket
+                                <label class="radio-inline">
+                                    <input type="radio" name="payment_method" value="Rocket"> Rocket &nbsp;&nbsp;
                                 </label>
-                                <label class="checkbox-inline">
-                                    <input type="checkbox" name="payment_method" value="BKash">BKash
+                                <label class="radio-inline">
+                                    <input type="radio" name="payment_method" value="BKash"> BKash
                                 </label>
                             </div>
                             <div class="col-lg-12">
