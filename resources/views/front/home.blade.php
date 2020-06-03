@@ -22,6 +22,14 @@
                         timer: 1500
                     });
                     $("#cart_item_count").text(response.count);
+                } else {
+                    swal({
+                        position: 'top',
+                        type: 'warning',
+                        title: response.msg,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
                 }
             }
         });
@@ -133,7 +141,7 @@
                 <div class="l_product_item">
                     <div class="l_p_img">
                         <a href="{{route('view_product',$products[0]->id)}}">
-                            <img src="{{ $products[0]->image }}" alt="">
+                            <img style="height: 150px" src="{{ $products[0]->image }}" alt="">
                         </a>
                     </div>
                     <div class="l_p_text">
@@ -149,7 +157,7 @@
                 <div class="l_product_item">
                     <div class="l_p_img">
                         <a href="{{route('view_product',$products[1]->id)}}">
-                            <img src="{{ $products[1]->image }}" alt="">
+                            <img style="height: 150px" src="{{ $products[1]->image }}" alt="">
                         </a>
                     </div>
                     <div class="l_p_text">
@@ -169,7 +177,7 @@
                 <div class="l_product_item">
                     <div class="l_p_img">
                         <a href="{{route('view_product',$products[2]->id)}}">
-                            <img src="{{ $products[2]->image }}" alt="">
+                            <img style="height: 150px" src="{{ $products[2]->image }}" alt="">
                         </a>
                     </div>
                     <div class="l_p_text">
@@ -185,7 +193,7 @@
                 <div class="l_product_item">
                     <div class="l_p_img">
                         <a href="{{route('view_product',$products[3]->id)}}">
-                            <img src="{{ $products[3]->image }}" alt="">
+                            <img style="height: 150px" src="{{ $products[3]->image }}" alt="">
                         </a>
                     </div>
                     <div class="l_p_text">
@@ -205,7 +213,7 @@
                 <div class="l_product_item">
                     <div class="l_p_img">
                         <a href="{{ route('view_product',$products[4]->id)}}">
-                            <img src="{{ $products[4]->image }}" alt="">
+                            <img style="height: 150px" src="{{ $products[4]->image }}" alt="">
                         </a>
                     </div>
                     <div class="l_p_text">
@@ -221,7 +229,7 @@
                 <div class="l_product_item">
                     <div class="l_p_img">
                         <a href="{{route('view_product',$products[5]->id)}}">
-                            <img src="{{ $products[5]->image }}" alt="">
+                            <img style="height: 150px" src="{{ $products[5]->image }}" alt="">
                         </a>
                     </div>
                     <div class="l_p_text">
@@ -241,7 +249,7 @@
                 <div class="l_product_item">
                     <div class="l_p_img">
                         <a href="{{route('view_product',$products[6]->id)}}">
-                            <img src="{{ $products[6]->image }}" alt="">
+                            <img style="height: 150px" src="{{ $products[6]->image }}" alt="">
                         </a>
                     </div>
                     <div class="l_p_text">
@@ -257,7 +265,7 @@
                 <div class="l_product_item">
                     <div class="l_p_img">
                         <a href="{{route('view_product',$products[7]->id)}}">
-                            <img src="{{ $products[7]->image }}" alt="">
+                            <img style="height: 150px" src="{{ $products[7]->image }}" alt="">
                         </a>
                     </div>
                     <div class="l_p_text">
@@ -379,7 +387,7 @@
     </section> -->
 <!--================End Product_listing Area =================-->
 
-<!--================Featured Product Area =================-->
+<!--================Latest Product Area =================-->
 <section class="feature_product_area">
     <div class="container">
         <div class="f_p_inner">
@@ -446,7 +454,7 @@
                     <div class="item {{ $item->category->url }}">
                         <div class="fillter_product_item bags">
                             <div class="f_p_img">
-                                <img src="{{ $item->image }}" alt="">
+                                <img style="height: 150px" src="{{ $item->image }}" alt="">
                                 <h5 class="sale">Sale</h5>
                             </div>
                             <div class="f_p_text">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Model\Image;
+use App\Model\Cart;
 use App\Model\Product;
 use Illuminate\Http\Request;
 use Validator;
@@ -14,8 +15,12 @@ class CartsController extends Controller
     public function addToCart(Request $request)
     {
         $data = $request->except('_token');
-        if ($request->session()->get('cart_id')) {
+        if ($request->session()->get('cart_id') && Cart::find($request->session()->get('cart_id'))) {
             $cartId = $request->session()->get('cart_id');
+           
+            if (DB::table('cart_items')->where('product_id', $data['product_id'])->where('cart_id', $cartId)->first()) {
+                return json_encode(array('success' => false, 'msg' => 'Already added this product!'));
+            }
         } else {
             $cartInput = array(
                 'created_at' => date('Y-m-d H:i:s'),

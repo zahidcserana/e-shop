@@ -7,7 +7,7 @@ use App\Model\Order;
 use App\Model\Product;
 use App\Model\Image;
 use DB;
-use PDF;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class OrderController extends Controller
 {

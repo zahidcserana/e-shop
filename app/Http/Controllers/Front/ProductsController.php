@@ -29,9 +29,9 @@ class ProductsController extends Controller
         $productCount = DB::table('products')->where('category_id', $catId)->get();
         foreach ($products as $product) {
             $image = empty($product->image_id) == true ? 'product.gif' : Image::find($product->image_id)->large;
-            if (file_exists('image/products/'.$image)) {
-                $product->image = '/image/products/'.$image;
-            }else{
+            if (file_exists('image/products/' . $image)) {
+                $product->image = '/image/products/' . $image;
+            } else {
                 $product->image = '/image/products/product.gif';
             }
             $product->category = empty($product->category_id) == true ? '' : Product::find($product->id)->category->name;
@@ -52,8 +52,13 @@ class ProductsController extends Controller
     public function viewProduct($id)
     {
         $product = DB::table('products')->where('id', $id)->first();
+        if (empty($product)) {
+            return redirect()->route('home_page');
+        }
         $images = DB::table('images')->select('large')->where('product_id', $id)->get();
         $product->image = empty($product->image_id != null) == true ? 'default.gif' : Product::find($product->id)->image->large;
+        // dd($images);
+
         // $colorObj = new Color();
         // $product->color = empty($product->color) == true?[]:$colorObj->getColorName($product->color);
         // $sizeObj = new Size();
@@ -64,8 +69,10 @@ class ProductsController extends Controller
         //$product->sub_sub_category_id = SubSubCategory::find($product->sub_sub_category_id);
         $product->brand_id = Brand::find($product->brand_id);
 
+        $relatedProducts = Product::where('category_id', $product->category_id)->limit(4)->get();
 
         $data['product'] = $product;
+        $data['relatedProducts'] = $relatedProducts;
         $data['images'] = $images;
         // dd($product);
         return view('front.products.view_product', $data);
