@@ -4,6 +4,9 @@
 <script>
     function addToCart(id, price) {
         $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
             url: "{{ route('add_to_cart') }}",
             type: 'POST',
             data: {
